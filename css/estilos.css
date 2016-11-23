@@ -47,7 +47,6 @@ Naranja: FFA500
   color: #ffffff;
 }
 
-
 .navbar-default {
   background-color: #ff0000;
 
@@ -142,3 +141,10 @@ Naranja: FFA500
 }
 
 
+li.active {
+  background: #b50000;
+}
+
+li[class="active"] {
+  background: #b50000;
+}
