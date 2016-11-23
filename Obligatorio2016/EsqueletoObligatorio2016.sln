@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 14.00
+# Visual Studio 2015
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntidadesCompartidas", "EntidadesCompartidas\EntidadesCompartidas.csproj", "{5BE3C19B-BB01-4440-ADC4-67FC207563DC}"
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SitioWeb", "SitioWeb\", "{99461D31-D1AE-4569-A59F-25067B3AE3D2}"
