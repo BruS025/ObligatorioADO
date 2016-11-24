@@ -1,20 +1,23 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="Presentacion.MasterPage" %>
+<!-- Optional theme -->
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<head runat="server">
+    <meta charset="UTF-8"/>
+	<title>MasterPage</title>
+	<meta name="viewport" content="width=device-width,user-scalable=no,initial-scalable=1.0,maximum-scale=1.0,minimum-scale=1.0"/>
+	<link rel="stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="C:/css/estilos.css"/>
+    <link rel="shortcut icon" href="C:/Imagenes/favicon.ico"/> 
+</head>
 
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <link rel="stylesheet" href = "css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="css/estilos.css"/>
-    <link rel="shortcut icon" href="Imagenes/favicon.ico"/> 
-
-    <asp:ContentPlaceHolder ID="head" runat="server">
- 
-    </asp:ContentPlaceHolder>
-</head>
 <body>
-    <form id="masterPage" runat="server">
-    
+<form id="masterPage">
+
 <nav class="navbar navbar-default color1">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -26,32 +29,32 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="#">
-		<img src="Imagenes/logo.png"/>
+		<img src="C:/Imagenes/logoObligatorio2.jpg" >
 	  </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="navbar-header">
       <ul class="nav navbar-nav">
-        <li><a href="/Default.aspx">Home</a></li>
-        <li><a href="/MantenimientoClientes.aspx">Clientes</a></li>
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Clientes</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Productos <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="/MantenimientoProductosCongelados.aspx">Congelados</a></li>
+            <li><a href="#">Congelados</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="/MantenimientoProductosEnlatados.aspx">Enlatados</a></li>
+            <li><a href="#">Enlatados</a></li>
             <li role="separator" class="divider"></li>
           </ul>
         </li>
 		<li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ventas <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="/Venta.aspx">Ventas</a></li>
+            <li><a href="#">Ventas</a></li>
 			<li role="separator" class="divider"></li>
-            <li><a href="/VentasAnuales.aspx">Ventas anuales</a></li>
+            <li><a href="#">Ventas anuales</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="/VentasMensuales.aspx">Ventas mensuales</a></li>
+            <li><a href="#">Ventas mensuales</a></li>
             <li role="separator" class="divider"></li>
           </ul>
         </li>
@@ -59,13 +62,6 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-        
-        
-<div>
-    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-        
-    </asp:ContentPlaceHolder>
-</div>
 
 <div class="navbar navbar-inverse navbar-fixed-bottom color1">
     <div class="container">
@@ -76,8 +72,8 @@
 </div>
 
 
-    </form>
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+</form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity = "sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8" crossorigin = "anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
 </html>
