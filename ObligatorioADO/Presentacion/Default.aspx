@@ -34,6 +34,7 @@
         <div class="hidden-xs col-md-12 text-center">
             <asp:Image ID="ImagenLogo" runat="server" Height="200px" ImageUrl="~/Imagenes/logoObligatorio2.jpg" Width="500px" />
         </div>
+        <div class="col-xs-12 hidden-sm hidden-md hidden-lg text-center">
             <asp:Image ID="Image1" runat="server" Height="200px" ImageUrl="~/Imagenes/logoObligatorio2.jpg" Width="300px" />
         </div>
     </div>
