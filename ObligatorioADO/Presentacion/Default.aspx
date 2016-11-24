@@ -21,15 +21,24 @@
     <link rel="shortcut icon" href="Imagenes/favicon.ico"/> 
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-
+  
 <header>
     <div class="container">
         <h1><strong>Menú principal</strong></h1>
     </div>  
 </header>
 
-<br />
-<br />
+<!-- Se muestra logo distinto para xs -->
+<div class="container">
+    <div class="row">
+        <div class="hidden-xs col-md-12 text-center">
+            <asp:Image ID="ImagenLogo" runat="server" Height="200px" ImageUrl="~/Imagenes/logoObligatorio2.jpg" Width="500px" />
+        </div>
+            <asp:Image ID="Image1" runat="server" Height="200px" ImageUrl="~/Imagenes/logoObligatorio2.jpg" Width="300px" />
+        </div>
+    </div>
+</div>
+
 <br />
 
 <div class="container">
@@ -48,7 +57,7 @@
             <asp:Label ID="lbClientes" runat="server" Text="Usuarios" Font-Bold="True" Font-Size="X-Large" Width="200px" BackColor="Red" ForeColor="White"></asp:Label>
             <br />
             <br />
-            <asp:Button ID="btMenuMantenimientoClientes" runat="server" Text="Clientes" Width="200px" BackColor="#B50000" BorderStyle="None" Font-Size="large" ForeColor="White" />
+            <asp:Button ID="btMenuMantenimientoClientes" runat="server" Text="Clientes" Width="200px" BackColor="#B50000" BorderStyle="None" Font-Size="large" ForeColor="White" OnClick="btMenuMantenimientoClientes_Click" />
             <br />
             <br />
        </div>
@@ -57,10 +66,10 @@
             <asp:Label ID="lbProductos" runat="server" Text="Productos" Font-Bold="True" Font-Size="X-Large" Width="200px" BackColor="Red" ForeColor="White"></asp:Label>
             <br />
             <br />
-            <asp:Button ID="btMenuMantenimientoProductosEnlatados" runat="server" Text="Enlatados" Width="200px" BackColor="#B50000" BorderStyle="None" Font-Size="large" ForeColor="White" />
+            <asp:Button ID="btMenuMantenimientoProductosEnlatados" runat="server" Text="Enlatados" Width="200px" BackColor="#B50000" BorderStyle="None" Font-Size="large" ForeColor="White" OnClick="btMenuMantenimientoProductosEnlatados_Click" />
             <br />
             <br />
-            <asp:Button ID="btMenuMantenimientoProductosCongelados" runat="server" Text="Congelados" Width="200px" BackColor="#B50000" BorderStyle="None" Font-Size="large" ForeColor="White" />
+            <asp:Button ID="btMenuMantenimientoProductosCongelados" runat="server" Text="Congelados" Width="200px" BackColor="#B50000" BorderStyle="None" Font-Size="large" ForeColor="White" OnClick="btMenuMantenimientoProductosCongelados_Click" />
             <br />
             <br />
         </div>
