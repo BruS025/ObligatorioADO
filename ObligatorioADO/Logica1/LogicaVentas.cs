@@ -5,9 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using EntidadesCompartidas;
 
-namespace Logica1
+namespace Logica
 {
-    class LogicaVentas
+    public class LogicaVentas
     {
+
     }
 }

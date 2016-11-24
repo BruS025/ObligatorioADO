@@ -7,7 +7,28 @@ using EntidadesCompartidas;
 
 namespace Persistencia
 {
-    class PersistenciaPEnlatados
+    public class PersistenciaPEnlatados
     {
+        public static int Buscar()
+        {
+            throw new NotImplementedException();
+        }
+
+        public static int Agregar()
+        {
+            throw new NotImplementedException();
+        }
+
+        public static int Modificar()
+        {
+            throw new NotImplementedException();
+        }
+
+        public static int Eliminar()
+        {
+            throw new NotImplementedException();
+        }
+
+
     }
 }
