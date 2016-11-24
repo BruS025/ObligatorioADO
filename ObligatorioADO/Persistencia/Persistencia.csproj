@@ -41,7 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="PersistenciaClientes.cs" />
+    <Compile Include="PersistenciaEmpresa.cs" />
+    <Compile Include="PersistenciaPCongelados.cs" />
+    <Compile Include="PersistenciaPEnlatados.cs" />
+    <Compile Include="PersistenciaVentas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

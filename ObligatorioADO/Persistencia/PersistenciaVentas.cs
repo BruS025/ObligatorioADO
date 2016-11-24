@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using EntidadesCompartidas;
 
-namespace Logica1
+namespace Persistencia
 {
-    class LogicaClientes
+    class PersistenciaVentas
     {
     }
 }
