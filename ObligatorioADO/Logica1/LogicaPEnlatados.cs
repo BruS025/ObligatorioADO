@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,24 +10,29 @@ namespace Logica
 {
     public class LogicaPEnlatados
     {
-        public static int Buscar()
+        public static List<PEnlatado> Buscar(String busqueda)
         {
-            return PersistenciaPEnlatados.Buscar();
+            return PersistenciaPPEnlatados.Buscar(busqueda);
         }
 
-        public static int Agregar()
+        public static int Agregar(PEnlatado producto)
         {
-            return PersistenciaPEnlatados.Agregar();
+            return PersistenciaPEnlatados.Agregar(producto);
         }
 
-        public static int Modificar()
+        public static int Modificar(PEnlatado producto)
         {
-            return PersistenciaPEnlatados.Modificar();
+            return PersistenciaPEnlatados.Modificar(producto);
         }
 
-        public static int Eliminar()
+        public static int Eliminar(long cod)
         {
-            return PersistenciaPEnlatados.Eliminar();
+            return PersistenciaPEnlatados.Eliminar(cod);
+        }
+        
+        public static List<PEnlatado> Listar()
+        {
+            return PersistenciaPEnlatados.Listar();
         }
     }
 }
