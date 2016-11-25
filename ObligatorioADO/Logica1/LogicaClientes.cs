@@ -10,24 +10,29 @@ namespace Logica
 {
     public class LogicaClientes
     {
-        public static int Buscar()
+        public static List<Cliente> Buscar(String busqueda)
         {
-            return PersistenciaClientes.Buscar();
+            return PersistenciaClientes.Buscar(String busqueda);
         }
 
-        public static int Agregar()
+        public static int Agregar(Cliente cliente)
         {
-            return PersistenciaClientes.Agregar();
+            return PersistenciaClientes.Agregar(cliente);
         }
 
-        public static int Modificar()
+        public static int Modificar(Cliente cliente)
         {
-            return PersistenciaClientes.Modificar();
+            return PersistenciaClientes.Modificar(cliente);
         }
 
-        public static int Eliminar()
+        public static int Eliminar(int cedula)
         {
-            return PersistenciaClientes.Eliminar();
+            return PersistenciaClientes.Eliminar(cedula);
+        }
+        
+        public static List<Cliente> Listar()
+        {
+            return PersistenciaClientes.Listar();
         }
     }
 }
