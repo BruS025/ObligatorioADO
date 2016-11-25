@@ -81,21 +81,23 @@ GO
 
 --------Clientes
 
-create proc SP_AgregarCli
+CREATE proc SP_AgregarCliente
+
 @ciClieNue int,
 @nomCliNue VARCHAR(20),
 @apeCliNue VARCHAR(20),
 @telCliNue BIGINT,
 @dirCliNue VARCHAR(40)
-as
-begin
-	if exists (select c.ciCli from Clientes c where c.ciCli=@ciClieNue)
-		begin
-			return 1
-		end
-	else
-		begin transaction
-			insert into Clientes values (@ciClieNue,@nomCliNue,@apeCliNue,@telCliNue,@dirCliNue)
+
+AS
+BEGIN
+	IF EXISTS (SELECT c.ciCli FROM Clientes c WHERE c.ciCli=@ciClieNue)
+		BEGIN
+			RETURN 1
+		END
+	ELSE
+		BEGIN transaction
+			INSERT INTO Clientes VALUES (@ciClieNue,@nomCliNue,@apeCliNue,@telCliNue,@dirCliNue)
 
 			IF @@ERROR <> 0
 				BEGIN
@@ -105,23 +107,25 @@ begin
 			ELSE 
 				BEGIN
 					COMMIT TRANSACTION
-					return 0
+					RETURN 0
 				END
-end
+END
 go
 
-create proc SP_EliminaCliente
+CREATE proc SP_EliminarCliente
+
 @ciCliente int
-as
-begin
-	if exists (select v.ciCli from Ventas v where v.ciCli=@ciCliente)
-		begin
-			return 1
-		end
-	else
-		begin transaction
-			delete Clientes
-			where ciCli=@ciCliente
+
+AS
+BEGIN
+	IF EXISTS (select v.ciCli FROM Ventas v WHERE v.ciCli=@ciCliente)
+		BEGIN
+			RETURN 1
+		END
+	ELSE
+		BEGIN transaction
+			DELETE Clientes
+			WHERE ciCli=@ciCliente
 
 			IF @@ERROR <> 0
 				BEGIN
@@ -131,13 +135,13 @@ begin
 			ELSE 
 				BEGIN
 					COMMIT TRANSACTION
-					return 0
+					RETURN 0
 				END
 
-end
+END
 go
 
-create proc SP_ModificarCliente
+CREATE proc SP_ModificarCliente
 @ciCliB INT,
 @nomCliNue VARCHAR(20),
 @apeCliNue VARCHAR(20),
