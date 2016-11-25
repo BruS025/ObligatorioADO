@@ -10,24 +10,29 @@ namespace Logica
 {
     public class LogicaPCongelados
     {
-        public static int Buscar()
+        public static List<PCongelado> Buscar(String busqueda)
         {
-            return PersistenciaPCongelados.Buscar();
+            return PersistenciaPCongelados.Buscar(busqueda);
         }
 
-        public static int Agregar()
+        public static int Agregar(PCongelado producto)
         {
-            return PersistenciaPCongelados.Agregar();
+            return PersistenciaPCongelados.Agregar(producto);
         }
 
-        public static int Modificar()
+        public static int Modificar(PCongelado producto)
         {
-            return PersistenciaPCongelados.Modificar();
+            return PersistenciaPCongelados.Modificar(producto);
         }
 
-        public static int Eliminar()
+        public static int Eliminar(long cod)
         {
-            return PersistenciaPCongelados.Eliminar();
+            return PersistenciaPCongelados.Eliminar(cod);
+        }
+        
+        public static List<PCongelado> Listar()
+        {
+            return PersistenciaPCongelados.Listar();
         }
     }
 }
