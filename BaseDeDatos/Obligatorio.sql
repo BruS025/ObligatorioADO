@@ -2,7 +2,7 @@ USE master
 GO
 
 -- Elimino base de datos Obligatorio si ya existe...
-if exists (select * from sys.databases where name = 'OBLIGATORIO')
+IF EXISTS (SELECT * FROM sys.databases WHERE name = 'OBLIGATORIO')
 BEGIN
 	DROP DATABASE OBLIGATORIO
 END 
@@ -71,7 +71,7 @@ GO
 -- Creo la Tabla Lineas de las Ventas
 CREATE TABLE Linea
 (
-	idVen int foreign key references Ventas(idVen),
+	idVen int foreign key references Ventas(idVen) ON DELETE CASCADE,
 	codB INT FOREIGN KEY REFERENCES Productos(codB),
 	cantidad int Not Null,
 	primary key(idVen, codB)
@@ -82,9 +82,9 @@ GO
 
 --------Clientes
 
-CREATE proc SP_AgregarCliente
+CREATE PROCEDURE SP_AgregarCliente
 
-@ciClieNue int,
+@ciClieNue INT,
 @nomCliNue VARCHAR(20),
 @apeCliNue VARCHAR(20),
 @telCliNue BIGINT,
@@ -111,11 +111,11 @@ BEGIN
 					RETURN 0
 				END
 END
-go
+GO
 
-CREATE proc SP_EliminarCliente
+CREATE PROCEDURE SP_EliminarCliente
 
-@ciCliente int
+@ciCliente INT
 
 AS
 BEGIN
@@ -124,7 +124,7 @@ BEGIN
 			RETURN 1
 		END
 	ELSE
-		BEGIN transaction
+		BEGIN TRANSACTION
 			DELETE Clientes
 			WHERE ciCli=@ciCliente
 
@@ -140,9 +140,9 @@ BEGIN
 				END
 
 END
-go
+GO
 
-CREATE proc SP_ModificarCliente
+CREATE PROCEDURE SP_ModificarCliente
 @ciCliB INT,
 @nomCliNue VARCHAR(20),
 @apeCliNue VARCHAR(20),
@@ -150,52 +150,68 @@ CREATE proc SP_ModificarCliente
 @dirCliNue VARCHAR (40)
 AS
 BEGIN
-	if exists (select v.ciCli from Ventas v where v.ciCli=@ciCliB)
-		begin
-			return 1
-		end
-	else 
-		begin transaction 
-		update Clientes
-		set nomCli=@nomCliNue,
+	IF EXISTS (SELECT v.ciCli FROM Ventas v WHERE v.ciCli=@ciCliB)
+		BEGIN
+			RETURN 1
+		END
+	ELSE
+		BEGIN TRANSACTION 
+		UPDATE Clientes
+		SET nomCli=@nomCliNue,
 			apeCli=@apeCliNue,
 			telCli=@telCliNue,
 			dirCli=@dirCliNue
-IF @@ERROR <> 0
-	BEGIN
-		ROLLBACK TRANSACTION
-		RETURN @@ERROR
-	END
-ELSE
-	BEGIN
-	COMMIT TRANSACTION
-	RETURN 1
+	IF @@ERROR <> 0
+		BEGIN
+			ROLLBACK TRANSACTION
+			RETURN @@ERROR
+		END
+	ELSE
+		BEGIN
+			COMMIT TRANSACTION
+			RETURN 1
+		END
 END
+GO
+
+CREATE PROCEDURE SP_BuscarCliente
+@ciCliB INT
+AS
+BEGIN 
+	IF NOT EXISTS (SELECT c.ciCli FROM Clientes c WHERE c.ciCli=@ciCliB)
+		BEGIN
+			RETURN 1
+		END
+	ELSE
+		SELECT * FROM Clientes WHERE ciCli=@ciCliB
 END
+GO
+
+CREATE PROCEDURE SP_ListarCliente
+AS
+BEGIN
+	SELECT * FROM Clientes
+END
+GO
 
 
+--Productos
 
-	/*ciCli INT NOT NULL PRIMARY KEY,
-	nomCli VARCHAR(20) NOT NULL,
-	apeCli VARCHAR(20) NOT NULL,
-	telCli BIGINT NOT NULL,
-	dirCli VARCHAR(40) NOT NULL,*/
+CREATE PROCEDURE SP_AgregarProdConge
 
-alter proc SP_AgregarProdConge
-
-@cod bigint,
-@nombre varchar (50),
-@fecha_vencimiento datetime,
-@precio money,
-@peso decimal
+@cod BIGINT,
+@nombre VARCHAR (50),
+@fecha_vencimiento DATETIME,
+@precio MONEY,
+@peso DECIMAL
 
 AS
 BEGIN
 
-if exists (select codB from Productos where codB = @cod)
-	begin
-		return 2
-	end
+IF EXISTS (SELECT codB FROM Productos WHERE codB = @cod)
+	BEGIN
+		RETURN 2
+	END
 
 BEGIN TRANSACTION
 INSERT INTO Productos(codB,nomProd,fechaVto,precioProd)
@@ -226,159 +242,76 @@ END
 DECLARE @RETORNO INT
 EXEC @RETORNO = SP_AgregarProdConge 123456,'prueba','2016-10-25',15,50
 PRINT @retorno
-go
+GO
 
-create proc SP_BuscarCliente
-@ciCliB int
-as
-begin 
-	if not exists (select c.ciCli from Clientes c where c.ciCli=@ciCliB)
-		begin
-			return 1
-		end
-	else
-		select * from Clientes where ciCli=@ciCliB
-end
-go
+CREATE PROCEDURE SP_AgregarProdEnl
 
-create proc SP_ListarCliente
-as
-begin
-	select * from Clientes
-end
-go
-
-
---Productos
-
-alter proc SP_AgregarProdEnl
-
-@cod bigint,
-@nombre varchar (50),
-@fecha_vencimiento datetime,
-@precio money,
-@TipoTapa bit
+@cod BIGINT,
+@nombre VARCHAR (50),
+@fecha_vencimiento DATETIME,
+@precio MONEY,
+@TipoTapa BIT
 
 AS
 BEGIN
 
-if exists (select codB from Productos where codB = @cod)
-	begin
-		return 2
-	end
+	IF EXISTS (SELECT codB FROM Productos WHERE codB = @cod)
+		BEGIN
+			RETURN 2
+		END
 
 
 BEGIN TRANSACTION
-INSERT INTO Productos(codB,nomProd,fechaVto,precioProd)
-VALUES (@cod,@nombre,@fecha_vencimiento,@precio)
+	INSERT INTO Productos(codB,nomProd,fechaVto,precioProd)
+	VALUES (@cod,@nombre,@fecha_vencimiento,@precio)
 
-IF @@ERROR <> 0
-	BEGIN
-		ROLLBACK TRANSACTION
-		RETURN @@ERROR
-	END
+		IF @@ERROR <> 0
+			BEGIN
+				ROLLBACK TRANSACTION
+				RETURN @@ERROR
+			END
 
-INSERT INTO Enlatados(codB,tipoTapa)
-VALUES (@cod,@TipoTapa)
+	INSERT INTO Enlatados(codB,tipoTapa)
+	VALUES (@cod,@TipoTapa)
 
-IF @@ERROR <> 0
-	BEGIN
-		ROLLBACK TRANSACTION
-		RETURN @@ERROR
-	END
-ELSE
-	BEGIN
-	COMMIT TRANSACTION
-	RETURN 1
-END
+		IF @@ERROR <> 0
+			BEGIN
+				ROLLBACK TRANSACTION
+				RETURN @@ERROR
+			END
+		ELSE
+			BEGIN
+				COMMIT TRANSACTION
+				RETURN 1
+			END
 END
 
 DECLARE @RETORNO INT
 EXEC @RETORNO = SP_AgregarProdEnl 1234567,'prueba','2016-10-27',15,1
 PRINT @retorno
-go
+GO
 
-create proc SP_AgregarProdCong
-
-@cod bigint,
-@nombre varchar (50),
-@fecha_vencimiento datetime,
-@precio money,
-@Peso bit
-
-AS
-BEGIN
-
-if exists (select codB from Productos where codB = @cod)
-	begin
-		return 2
-	end
-
-
-BEGIN TRANSACTION
-INSERT INTO Productos(codB,nomProd,fechaVto,precioProd)
-VALUES (@cod,@nombre,@fecha_vencimiento,@precio)
-
-IF @@ERROR <> 0
-	BEGIN
-		ROLLBACK TRANSACTION
-		RETURN @@ERROR
-	END
-
-INSERT INTO Congelados(codB,pesoProd)
-VALUES (@cod,@Peso)
-
-IF @@ERROR <> 0
-	BEGIN
-		ROLLBACK TRANSACTION
-		RETURN @@ERROR
-	END
-ELSE
-	BEGIN
-	COMMIT TRANSACTION
-	RETURN 1
-END
-END
-
-create proc SP_EliminarProd
-@Cod bigint
-as
-begin
-	if not exists (select p.codB from Productos p where p.codB=@Cod)
-		begin
-			return 1
-		end
-	else if exists(select li.codB from Linea li where li.codB=@Cod)
-		begin
-			delete Linea
-			where codB=@Cod
-
-			delete Ventas
-			where idVen=
-end
-go
-
-create proc SP_ModificarEnla
-@cod bigint,
+CREATE PROCEDURE SP_ModificarEnla
+@cod BIGINT,
 @NomProNue VARCHAR(20),
 @FechaVtoNue DATETIME,
 @PrecioProdNue MONEY,
 @TipoTapaNue BIT
-as
+AS
 
-begin
+BEGIN
 
-	if not exists (select p.codB from Productos p where p.codB=@Cod)
-		begin 
-			return 1
-		end
-	else
+	IF NOT EXISTS (SELECT p.codB FROM Productos p WHERE p.codB=@Cod)
+		BEGIN 
+			RETURN 1
+		END
+	ELSE
 		BEGIN TRANSACTION
 			UPDATE Productos 
-			set nomProd=@NomProNue,
+			SET nomProd=@NomProNue,
 				fechaVto=@FechaVtoNue,
 				precioProd=@PrecioProdNue
-			where  
+			WHERE  
 				Productos.codB=@cod
 
 		IF @@ERROR <> 0
@@ -387,8 +320,8 @@ begin
 				RETURN @@ERROR
 			END
 		UPDATE Enlatados
-			set tipoTapa=@TipoTapaNue
-			where 
+			SET tipoTapa=@TipoTapaNue
+			WHERE 
 				Enlatados.codB=@cod
 
 		IF @@ERROR <> 0
@@ -401,31 +334,31 @@ begin
 			BEGIN
 				COMMIT TRANSACTION
 				RETURN 1	
-			end					
-end
-go
+			END					
+END
+GO
 
-create proc SP_ModificarCong
-@cod bigint,
+CREATE PROCEDURE SP_ModificarCong
+@cod BIGINT,
 @NomProNue VARCHAR(20),
 @FechaVtoNue DATETIME,
 @PrecioProdNue MONEY,
 @PesoProdNue BIT
-as
+AS
 
-begin
+BEGIN
 
-	if not exists (select p.codB from Productos p where p.codB=@Cod)
-		begin 
-			return 1
-		end
-	else
+	IF NOT EXISTS (SELECT p.codB FROM Productos p WHERE p.codB=@Cod)
+		BEGIN
+			RETURN 1
+		END
+	ELSE
 		BEGIN TRANSACTION
 			UPDATE Productos 
-			set nomProd=@NomProNue,
+			SET nomProd=@NomProNue,
 				fechaVto=@FechaVtoNue,
 				precioProd=@PrecioProdNue
-			where  
+			WHERE  
 				Productos.codB=@cod
 
 		IF @@ERROR <> 0
@@ -434,8 +367,8 @@ begin
 				RETURN @@ERROR
 			END
 		UPDATE Congelados
-			set pesoProd=@PesoProdNue
-			where 
+			SET pesoProd=@PesoProdNue
+			WHERE 
 				Congelados.codB=@cod
 
 		IF @@ERROR <> 0
@@ -448,52 +381,62 @@ begin
 			BEGIN
 				COMMIT TRANSACTION
 				RETURN 1	
-			end					
-end
-go
+			END				
+END
+GO
 
+CREATE PROCEDURE SP_BuscarEnl
+@codBus BIGINT
+AS
+BEGIN
+	IF NOT EXISTS (SELECT p.codB FROM Productos p WHERE p.codB=@codBus)
+		BEGIN
+			RETURN 1
+		END
+	ELSE
+		BEGIN
+			RETURN SELECT * FROM Productos p WHERE p.codB=codB UNION SELECT * FROM Enlatados e WHERE e.codB=@codBus
+		END
+END
+GO
 
-create proc SP_BuscarEnl
-@codBus bigint
-as
-begin
-	if not exists (select p.codB from Productos p where p.codB=@codBus)
-		begin
-			return 1
-		end
-	else
-		begin
-			return select * from Productos p where p.codB=codB union select * from Enlatados e where e.codB=@codBus
+CREATE PROCEDURE SP_BuscarCon
+@codBus BIGINT
+AS
+BEGIN
+	IF NOT EXISTS (SELECT p.codB FROM Productos p WHERE p.codB=@codBus)
+		BEGIN
+			RETURN 1
+		END
+	ELSE
+		BEGIN
+			RETURN SELECT * FROM Productos p WHERE p.codB=codB UNION SELECT * FROM Congelados c WHERE c.codB=@codBus
 		end
 end
-go
+GO
 
-create proc SP_BuscarCon
-@codBus bigint
-as
-begin
-	if not exists (select p.codB from Productos p where p.codB=@codBus)
-		begin
-			return 1
-		end
-	else
-		begin
-			return select * from Productos p where p.codB=codB union select * from Congelados c where c.codB=@codBus
-		end
-end
-go
-
-alter proc SP_Listar
-as
-begin
-	select * from Productos p join Congelados c on p.codB=c.codB 
-	select * from Productos p join Enlatados e on p.codB=e.codB
-end
+CREATE PROCEDURE SP_Listar
+AS
+BEGIN
+	SELECT * FROM Productos p JOIN Congelados c ON p.codB=c.codB 
+	SELCT * FROM Productos p JOIN Enlatados e ON p.codB=e.codB
+END
 
 DECLARE @RETORNO INT
 EXEC @RETORNO = SP_Listar
 PRINT @retorno
-go
+GO
+
+CREATE PROCEDURE SP_EliminarCon
+@codB BIGINT
+AS
+BEGIN
+	IF EXISTS (SELECT l.codB FROM Linea l WHERE l.codB=@codB
+		BEGIN
+			DELETE Ventas JOIN LINEA
+			WHERE 
+		END
+END
 
 
 
