@@ -23,6 +23,7 @@ CREATE TABLE Clientes
 	apeCli VARCHAR(20) NOT NULL,
 	telCli BIGINT NOT NULL,
 	dirCli VARCHAR(40) NOT NULL,
+	nroPueCli INT NOT NULL
 )
 GO
 
@@ -227,7 +228,7 @@ EXEC @RETORNO = SP_AgregarProdConge 123456,'prueba','2016-10-25',15,50
 PRINT @retorno
 go
 
-create proc SP_Buscar
+create proc SP_BuscarCliente
 @ciCliB int
 as
 begin 
@@ -240,11 +241,13 @@ begin
 end
 go
 
-create proc SP_ListClie
+create proc SP_ListarCliente
 as
 begin
 	select * from Clientes
 end
+go
+
 
 --Productos
 
@@ -295,8 +298,49 @@ EXEC @RETORNO = SP_AgregarProdEnl 1234567,'prueba','2016-10-27',15,1
 PRINT @retorno
 go
 
-/*
-create proc SP_Eliminar
+create proc SP_AgregarProdCong
+
+@cod bigint,
+@nombre varchar (50),
+@fecha_vencimiento datetime,
+@precio money,
+@Peso bit
+
+AS
+BEGIN
+
+if exists (select codB from Productos where codB = @cod)
+	begin
+		return 2
+	end
+
+
+BEGIN TRANSACTION
+INSERT INTO Productos(codB,nomProd,fechaVto,precioProd)
+VALUES (@cod,@nombre,@fecha_vencimiento,@precio)
+
+IF @@ERROR <> 0
+	BEGIN
+		ROLLBACK TRANSACTION
+		RETURN @@ERROR
+	END
+
+INSERT INTO Congelados(codB,pesoProd)
+VALUES (@cod,@Peso)
+
+IF @@ERROR <> 0
+	BEGIN
+		ROLLBACK TRANSACTION
+		RETURN @@ERROR
+	END
+ELSE
+	BEGIN
+	COMMIT TRANSACTION
+	RETURN 1
+END
+END
+
+create proc SP_EliminarProd
 @Cod bigint
 as
 begin
@@ -306,14 +350,12 @@ begin
 		end
 	else if exists(select li.codB from Linea li where li.codB=@Cod)
 		begin
-			delete Ventas
-			where idVen=
-
 			delete Linea
 			where codB=@Cod
+
+			delete Ventas
+			where idVen=
 end
-go
-*/
 go
 
 create proc SP_ModificarEnla
