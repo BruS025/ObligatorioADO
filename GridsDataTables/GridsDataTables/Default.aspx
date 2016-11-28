@@ -53,20 +53,6 @@
 
       </asp:GridView>
 
-        <!--                 taskTable.Columns.Add("Id", typeof(int));
-                taskTable.Columns.Add("Description", typeof(string));
-                taskTable.Columns.Add("IsComplete", typeof(bool));
-            
-            
-                            <Columns>
-                    <asp:CommandField ShowEditButton="True" EditText="Editar" CancelText="Cancelar" ButtonType="Button" HeaderText="Acciones" UpdateText="Guardar" CausesValidation="True" InsertVisible="True" />
-                    <asp:BoundField DataField="Cédula" HeaderText="Cédula" SortExpression="Cédula" ReadOnly ="true" />
-                    <asp:BoundField DataField="Dirección" HeaderText="Dirección" SortExpression="Dirección" />
-                    <asp:BoundField DataField="Teléfono" HeaderText="Teléfono" SortExpression="Teléfono" />
-                    <asp:BoundField DataField="Descuento" HeaderText="Descuento" SortExpression="Descuento" />
-                    <asp:CommandField ShowDeleteButton="True" DeleteText="Eliminar" ButtonType="Button" HeaderText="Eliminar" CausesValidation="True" />
-                </Columns> -->
-
 
     </div>
     </form>
