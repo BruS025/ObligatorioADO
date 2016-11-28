@@ -77,11 +77,41 @@
         <h4 class="modal-title" id="tituloModal">Eliminar cliente</h4>
       </div>
       <div class="modal-body">
+		<div>
+			<div class="input-group">
+				<span class="input-group-addon" id="basic-addon1">Documento</span>
+				<input type="text" class="form-control" placeholder="CI" aria-describedby="basic-addon1">
+			</div>
+			
+			<br />
+
+			<div class="input-group">
+				<span class="input-group-addon" id="basic-addon1">Nombre</span>
+				<input type="text" class="form-control" placeholder="Nombre de usuario" aria-describedby="basic-addon1">
+			</div>
+			
+			<br />
+			
+			<div class="input-group">
+				<span class="input-group-addon" id="basic-addon1">Direccion</span>
+				<input type="text" class="form-control" placeholder="Direccion" aria-describedby="basic-addon1">
+			</div>
+			
+			<br />
+			
+			<div class="input-group">
+				<span class="input-group-addon" id="basic-addon1">Telefono</span>
+				<input type="text" class="form-control" placeholder="Telefono" aria-describedby="basic-addon1">
+			</div>
+			
+			<br />
+			
+		</div>
         Desea eliminar este cliente?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Confirmar</button>
+        <button id="confirmar" type="button" class="btn btn-primary">Confirmar</button>
       </div>
     </div>
   </div>
@@ -94,6 +124,53 @@
         </div>
     </div>
 </div>
+
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Panel heading</div>
+  <div class="panel-body">
+  </div>
+
+  <!-- Table -->
+  <table class="table table-hover">
+    <tbody>
+  <!-- Aplicadas en las filas -->
+  <tr class="active">Active</tr>
+  <tr class="success">success</tr>
+  <tr class="warning">warning</tr>
+  <tr class="danger">danger</tr>
+ 
+  <!-- Aplicadas en las celdas (<td> o <th>) -->
+  <tr>
+    <td class="active">...</td>
+    <td class="success">...</td>
+    <td class="warning">...</td>
+    <td class="danger">Danger</td>
+  </tr>
+</tbody>
+  </table>
+  <div class="panel-footer">Panel footer</div>
+</div>
+
+
+<table>
+<tbody>
+  <!-- Aplicadas en las filas -->
+  <tr class="active">...</tr>
+  <tr class="success">...</tr>
+  <tr class="warning">...</tr>
+  <tr class="danger">...</tr>
+ 
+  <!-- Aplicadas en las celdas (<td> o <th>) -->
+  <tr>
+    <td class="active">...</td>
+    <td class="success">...</td>
+    <td class="warning">...</td>
+    <td class="danger">...</td>
+  </tr>
+</tbody>
+</table>
+
 
 
 </form>
