@@ -17,15 +17,15 @@ namespace EntidadesCompartidas
         public int _NroPuerta;
 
         // Constructor Completo
-        /*public Cliente(int pCI, string pNom, string pApe, string pTel, string pDir, int pNroP)
+        public Cliente(int pCI, string pNom, string pApe, string pTel, string pDir, int pNroP)
         {
-            Cedula = pCI;
-            Nombre = pNom;
-            Apellido = pApe;
-            Telefono = pTel;
-            Direccion = pDir;
-            NroPuerta = pNroP;
-        }*/
+            _Cedula = pCI;
+            _Nombre = pNom;
+            _Apellido = pApe;
+            _Telefono = pTel;
+            _Direccion = pDir;
+            _NroPuerta = pNroP;
+        }
 
         // Métodos
         public int Cedula
