@@ -13,6 +13,15 @@ namespace Presentacion {
     public partial class MantenimientoClientes {
         
         /// <summary>
+        /// btBuscar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btBuscar;
+        
+        /// <summary>
         /// lbResultado control.
         /// </summary>
         /// <remarks>
@@ -20,5 +29,14 @@ namespace Presentacion {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbResultado;
+        
+        /// <summary>
+        /// btVolver control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btVolver;
     }
 }

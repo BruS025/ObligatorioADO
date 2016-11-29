@@ -13,5 +13,15 @@ namespace Presentacion
         {
 
         }
+
+        protected void btVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Default.aspx");
+        }
+
+        protected void btBuscar_Click(object sender, EventArgs e)
+        {
+            lbResultado.Text = "Buscar";
+        }
     }
 }
