@@ -57,8 +57,12 @@
                 <input id="txtNombre" type="text" class="form-control" placeholder="Nombre.."/>
             </div>
           
-            <div class="col-md-3 col-lg-3">
+            <div class="col-md-2 col-lg-2">
                     <input id="txtDireccion" type="text" class="form-control" placeholder="Direccion.."/>
+            </div>
+
+            <div class="col-md-2 col-lg-2">
+                    <input id="txtNumeroPuerta" type="text" class="form-control" placeholder="Nro. puerta.."/>
             </div>
 
             <!-- <div class="clearfix visible-sm-block"></div> -->

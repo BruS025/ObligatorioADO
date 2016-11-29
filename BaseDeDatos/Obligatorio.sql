@@ -83,15 +83,14 @@ GO
 
 --Clientes
 
-
-
 CREATE PROCEDURE SP_AgregarCliente
 
 @ciClieNue INT,
 @nomCliNue VARCHAR(20),
 @apeCliNue VARCHAR(20),
 @telCliNue BIGINT,
-@dirCliNue VARCHAR(40)
+@dirCliNue VARCHAR(40),
+@nroPueCliNue INT
 
 AS
 BEGIN
@@ -101,7 +100,7 @@ BEGIN
 		END
 	ELSE
 		BEGIN transaction
-			INSERT INTO Clientes VALUES (@ciClieNue,@nomCliNue,@apeCliNue,@telCliNue,@dirCliNue)
+			INSERT INTO Clientes VALUES (@ciClieNue,@nomCliNue,@apeCliNue,@telCliNue,@dirCliNue,@nroPueCliNue)
 
 			IF @@ERROR <> 0
 				BEGIN
@@ -150,7 +149,9 @@ CREATE PROCEDURE SP_ModificarCliente
 @nomCliNue VARCHAR(20),
 @apeCliNue VARCHAR(20),
 @telCliNue BIGINT,
-@dirCliNue VARCHAR (40)
+@dirCliNue VARCHAR (40),
+@nroPueCli INT
+
 AS
 BEGIN
 	IF EXISTS (SELECT v.ciCli FROM Ventas v WHERE v.ciCli=@ciCliB)
@@ -160,10 +161,12 @@ BEGIN
 	ELSE
 		BEGIN TRANSACTION 
 		UPDATE Clientes
-		SET nomCli=@nomCliNue,
-			apeCli=@apeCliNue,
-			telCli=@telCliNue,
-			dirCli=@dirCliNue
+		SET nomCli = @nomCliNue,
+			apeCli = @apeCliNue,
+			telCli = @telCliNue,
+			dirCli = @dirCliNue,
+			nroPueCli = @nroPueCli
+
 	IF @@ERROR <> 0
 		BEGIN
 			ROLLBACK TRANSACTION
