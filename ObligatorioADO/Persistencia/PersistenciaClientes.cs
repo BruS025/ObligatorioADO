@@ -29,7 +29,7 @@ namespace Persistencia
             try
             {
                 conexion.Open();
-                comando.ExecuteScalar();//no creo que valla scalar aca
+                comando.ExecuteNonQuery();
                 SqlDataReader lector = comando.ExecuteReader();
 
                 while (lector.Read())
@@ -38,7 +38,7 @@ namespace Persistencia
                     cliente.Nombre = lector["nomCli"].ToString();
                     cliente.Apellido = lector["apeCli"].ToString();
                     cliente.Telefono = lector["telCli"].ToString();
-                    cliente.Direccion = lector["CalleDireccion"].ToString();
+                    cliente.Direccion = lector["dirCli"].ToString();
                     cliente.NroPuerta = Convert.ToInt32(lector["nroPueCli"].ToString());
                 }
                 return cliente;
