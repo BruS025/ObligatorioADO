@@ -33,7 +33,7 @@
                 <span class="input-group-addon" id="basic-addon1">Buscar cliente</span>
                 <input id="txtBuscar" type="text" class="form-control" placeholder="Ingrese caracteres de busqueda.." aria-describedby="basic-addon1"/>
                 <span class="input-group-btn">
-                    <button id="btBuscar" class="btn btn-default" type="button" >Buscar</button>
+                    <button id="btBuscar" class="btn btn-default" type="button">Buscar</button>
                 </span>
             </div>
         </div>

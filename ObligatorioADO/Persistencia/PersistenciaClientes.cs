@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EntidadesCompartidas;
 using System.Data.SqlTypes;
 using System.Data.SqlClient;
 using System.Data;
-
-using EntidadesCompartidas;
 
 namespace Persistencia
 {
@@ -60,22 +59,17 @@ namespace Persistencia
 
         }
 
-        public static int Agregar(Cliente cliente)
+        public static int Agregar()
         {
             throw new NotImplementedException();
         }
 
-        public static int Modificar(Cliente cliente)
+        public static int Modificar()
         {
             throw new NotImplementedException();
         }
 
-        public static int Eliminar(int ci)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static List<Cliente> Listar ()
+        public static int Eliminar()
         {
             throw new NotImplementedException();
         }
