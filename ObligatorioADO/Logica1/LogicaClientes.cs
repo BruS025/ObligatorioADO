@@ -10,9 +10,9 @@ namespace Logica
 {
     public class LogicaClientes
     {
-        public static List<Cliente> Buscar(String busqueda)
+        public static Cliente Buscar(int ciClie)
         {
-            return PersistenciaClientes.Buscar(String busqueda);
+            return PersistenciaClientes.Buscar(ciClie);
         }
 
         public static int Agregar(Cliente cliente)

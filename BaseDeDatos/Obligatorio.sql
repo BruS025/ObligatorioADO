@@ -42,7 +42,7 @@ GO
 -- Creo la Tabla Enlatados
 CREATE TABLE Enlatados
 (
-	codB INT PRIMARY KEY FOREIGN KEY REFERENCES Productos(codB),
+	codB INT PRIMARY KEY FOREIGN KEY REFERENCES Productos(codB) ON DELETE CASCADE,
 	tipoTapa BIT NOT NULL,
 )
 GO
@@ -50,7 +50,7 @@ GO
 -- Creo la Tabla Congelados
 CREATE TABLE Congelados
 (
-	codB INT PRIMARY KEY FOREIGN KEY REFERENCES Productos(codB),
+	codB INT PRIMARY KEY FOREIGN KEY REFERENCES Productos(codB) ON DELETE CASCADE,
 	pesoProd INT NOT NULL,
 )
 GO
@@ -80,7 +80,10 @@ GO
 
 -- Creacion de "Procedimientos almacenados"
 
---------Clientes
+
+--Clientes
+
+
 
 CREATE PROCEDURE SP_AgregarCliente
 
@@ -196,6 +199,7 @@ GO
 
 
 --Productos
+
 
 CREATE PROCEDURE SP_AgregarProdConge
 
@@ -419,7 +423,7 @@ CREATE PROCEDURE SP_Listar
 AS
 BEGIN
 	SELECT * FROM Productos p JOIN Congelados c ON p.codB=c.codB 
-	SELCT * FROM Productos p JOIN Enlatados e ON p.codB=e.codB
+	SELECT * FROM Productos p JOIN Enlatados e ON p.codB=e.codB
 END
 
 DECLARE @RETORNO INT
@@ -427,16 +431,110 @@ EXEC @RETORNO = SP_Listar
 PRINT @retorno
 GO
 
-CREATE PROCEDURE SP_EliminarCon
+CREATE PROCEDURE SP_EliminarPro
 @codB BIGINT
 AS
 BEGIN
-	IF EXISTS (SELECT l.codB FROM Linea l WHERE l.codB=@codB
+
+	IF EXISTS (SELECT l.codB FROM Linea l WHERE l.codB=@codB)
+		BEGIN TRANSACTION
+			DELETE Linea
+			WHERE codB=@codB
+
+			IF @@ERROR <> 0
+				BEGIN
+					ROLLBACK TRANSACTION
+					RETURN @@ERROR
+				END
+			DELETE Productos
+			WHERE codB=@codB
+
+			IF @@ERROR <> 0
+				BEGIN
+					ROLLBACK TRANSACTION
+					RETURN @@ERROR
+				END
+		ELSE
+			BEGIN
+				COMMIT TRANSACTION
+				RETURN 1
+			END
+	IF EXISTS (SELECT p.codB FROM Productos p WHERE p.codB=@codB)
+		BEGIN TRANSACTION
+			DELETE Productos
+			WHERE codB=@codB
+
+			IF @@ERROR <> 0
+				BEGIN
+					ROLLBACK TRANSACTION
+					RETURN @@ERROR
+				END
+
+		ELSE
+			BEGIN
+				COMMIT TRANSACTION
+				RETURN 1
+			END
+END
+GO
+
+
+--Ventas
+
+CREATE PROCEDURE SP_AgregarVenta
+@fechaVen DATETIME,
+@fechaPago DATETIME,
+@totalVen MONEY,
+@ciCliV INT,
+--Linea
+@codB INT,
+@cantidad INT
+AS
+BEGIN
+	IF EXISTS (SELECT c.ciCli FROM Clientes c where c.ciCli=@ciCliV)
+	BEGIN TRANSACTION
+		INSERT INTO Ventas (fechaVen,fechaPago,totalVen,ciCli)
+			VALUES (@fechaVen,@fechaPago,@totalVen,@ciCliV)
+
+			IF @@ERROR <> 0
+				BEGIN
+					ROLLBACK TRANSACTION
+					RETURN @@ERROR
+				END
+		INSERT INTO Linea (codB,cantidad)
+			VALUES (@codB,@cantidad)
+
+			IF @@ERROR <> 0
+				BEGIN
+					ROLLBACK TRANSACTION
+					RETURN @@ERROR
+				END
+	ELSE 
 		BEGIN
-			DELETE Ventas JOIN LINEA
-			WHERE 
+			COMMIT TRANSACTION
+			RETURN 1
 		END
 END
+GO
+
+/*Agregar
+Eliminar
+listar mensuales
+listar anuales
 
 
 
+
+
+	idVen 
+	fechaVen 
+	fechaPago 
+	totalVen 
+	ciCli
+
+(
+	idVen int foreign key references Ventas(idVen) ON DELETE CASCADE,
+	codB 
+	cantidad 
+	primary 
+)*/

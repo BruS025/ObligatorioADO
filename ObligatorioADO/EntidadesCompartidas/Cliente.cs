@@ -9,19 +9,23 @@ namespace EntidadesCompartidas
     public class Cliente
     {
         // Atributos
-        private int _Cedula;
-        private string _Direccion;
-        private string _Telefono;
-        private string _Nombre;
+        public int _Cedula;
+        public string _Nombre;
+        public string _Apellido;
+        public string _Telefono;
+        public string _Direccion;
+        public int _NroPuerta;
 
         // Constructor Completo
-        public Cliente(int pCI, string pDir, string pTel, string pNom)
+        /*public Cliente(int pCI, string pNom, string pApe, string pTel, string pDir, int pNroP)
         {
             Cedula = pCI;
-            Direccion = pDir;
-            Telefono = pTel;
             Nombre = pNom;
-        }
+            Apellido = pApe;
+            Telefono = pTel;
+            Direccion = pDir;
+            NroPuerta = pNroP;
+        }*/
 
         // Métodos
         public int Cedula
@@ -36,15 +40,29 @@ namespace EntidadesCompartidas
             }
         }
 
-        public string Direccion
+        public string Nombre
         {
-            get { return _Direccion; }
+            get { return _Nombre; }
             set
             {
                 if (value.Trim().Length < 5)
-                    throw new Exception("ERROR: La direccion debe tener al menos 5 caracteres...");
+                    throw new Exception("ERROR: El nombre debe tener al menos 5 caracteres...");
                 else
-                    _Direccion = value.Trim();
+                    _Nombre = value.Trim();
+            }
+        }
+
+        public string Apellido
+        {
+            get { return _Apellido; }
+            set
+            {
+                {
+                    if (value.Trim().Length < 5)
+                        throw new Exception("ERROR: El nombre debe tener al menos 5 caracteres...");
+                    else
+                        _Apellido = value.Trim();
+                }
             }
         }
 
@@ -70,23 +88,36 @@ namespace EntidadesCompartidas
             }
         }
 
-        public string Nombre
+        public string Direccion
         {
-            get { return _Nombre; }
+            get { return _Direccion; }
             set
             {
                 if (value.Trim().Length < 5)
-                    throw new Exception("ERROR: El nombre debe tener al menos 5 caracteres...");
+                    throw new Exception("ERROR: La direccion debe tener al menos 5 caracteres...");
                 else
-                    _Nombre = value.Trim();
+                    _Direccion = value.Trim();
+            }
+        }
+
+        public int NroPuerta
+        {
+            get { return _NroPuerta; }
+            set
+            {
+                if ((value < 0) || (value > 9999999))
+                    throw new Exception("Error puerta");
+                else
+                    _NroPuerta = value;
             }
         }
 
         // ToString()
         public override string ToString()
         {
-            return ("Cédula: " + _Cedula.ToString() + "; Nombre: " + _Nombre + "; Dir: " + _Direccion + "; Tel: " + _Telefono);
+            return ("Cédula: " + _Cedula.ToString() + "; Nombre: " + _Nombre + "; Apellido: " + _Apellido + "; Tel: " + _Telefono+ "; Dir: " + _Direccion + "; NroPuerta: " + _NroPuerta);
         }
     }
 
 }
+ 
