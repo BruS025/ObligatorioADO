@@ -16,7 +16,6 @@ namespace EntidadesCompartidas
         public string _Direccion;
         public int _NroPuerta;
 
-        /*
         // Constructor Completo
         public Cliente(int pCI, string pNom, string pApe, string pTel, string pDir, int pNroP)
         {
@@ -26,7 +25,7 @@ namespace EntidadesCompartidas
             _Telefono = pTel;
             _Direccion = pDir;
             _NroPuerta = pNroP;
-        }*/
+        }
 
         // Métodos
         public int Cedula
