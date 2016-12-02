@@ -30,10 +30,10 @@ namespace Presentacion
                 {
                     DataRow tableRow = taskTable.NewRow();
                     tableRow["Cedula"] = i;
-                    tableRow["Nombre"] = "Task " + i.ToString();
-                    tableRow["Apellido"] = "Task " + i.ToString();
+                    tableRow["Nombre"] = "12345678" + i.ToString();
+                    tableRow["Apellido"] = "12345678" + i.ToString();
                     tableRow["Telefono"] = i;
-                    tableRow["Direccion"] = "Task " + i.ToString();
+                    tableRow["Direccion"] = "12345678" + i.ToString();
                     tableRow["NroPuerta"] = i;
 
                     taskTable.Rows.Add(tableRow);

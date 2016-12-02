@@ -24,7 +24,7 @@
   
 <header>
     <div class="container">
-        <h1><strong>Menú principal</strong></h1>
+        <h2><strong>Menú principal</strong></h2>
     </div>  
 </header>
 

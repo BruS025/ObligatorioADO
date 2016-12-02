@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="MantenimientoClientes.aspx.cs" Inherits="Presentacion.MantenimientoClientes" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
-        <title>Mantenimiento de clientes</title>
+    <title>Mantenimiento de clientes</title>
 
     <link rel="stylesheet" href = "css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/estilos.css"/>
@@ -20,11 +20,9 @@
 
 <header>
     <div class="container">
-        <h1><strong>Mantenimiento de clientes</strong></h1>
+        <h2><strong>Mantenimiento de clientes</strong></h2>
     </div>  
 </header>
-
-<br />
 
 <div class="container">
     <div class="row">
@@ -70,23 +68,23 @@
         GridLines="None"
         HorizontalAlign="Center"
         Visible="True"
-        Width="90%"
+        Width="98%"
         ShowFooter="False"
         ShowHeaderWhenEmpty="True"
         PageSize="10"
-        Font-Size="Large">
+        Font-Size="Large" CaptionAlign="Top">
 
         <AlternatingRowStyle BackColor="White" />
 
           <Columns>
-              <asp:CommandField ControlStyle-Font-Size="Small" ShowEditButton="True" ShowCancelButton="true" ControlStyle-CssClass="btn btn-default" EditText="Editar" CancelText="Cancelar" ButtonType="Button" HeaderText="Acciones" UpdateText="Guardar" CausesValidation="True" InsertVisible="True" />
-              <asp:BoundField ItemStyle-Font-Size="Medium" DataField="Cedula" HeaderText="Cedula" SortExpression="Cedula" ReadOnly ="True" />
-              <asp:BoundField ItemStyle-Font-Size="Medium" DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
-              <asp:BoundField ItemStyle-Font-Size="Medium" DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
-              <asp:BoundField ItemStyle-Font-Size="Medium" DataField="Telefono" HeaderText="Telefono" SortExpression="Telefono" />
-              <asp:BoundField ItemStyle-Font-Size="Medium" DataField="Direccion" HeaderText="Direccion" SortExpression="Direccion" />
-              <asp:BoundField ItemStyle-Font-Size="Medium" DataField="NroPuerta" HeaderText="NroPuerta" SortExpression="NroPuerta" />
-              <asp:CommandField ControlStyle-Font-Size="Small" ControlStyle-CssClass="btn btn-danger" ShowDeleteButton="True" DeleteText="Eliminar" ButtonType="Button" HeaderText="Eliminar" CausesValidation="True" />
+              <asp:CommandField HeaderStyle-BorderWidth="2px" ControlStyle-Font-Size="Small" ShowEditButton="True" ShowCancelButton="true" ControlStyle-CssClass="btn btn-default" EditText="Editar" CancelText="Cancelar" ButtonType="Button" HeaderText="Acciones" UpdateText="Guardar" CausesValidation="True" InsertVisible="True" />
+              <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Medium" DataField="Cedula" HeaderText="Cedula" SortExpression="Cedula" ReadOnly ="True" />
+              <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Medium" DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
+              <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Medium" DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
+              <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Medium" DataField="Telefono" HeaderText="Telefono" SortExpression="Telefono" />
+              <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Medium" DataField="Direccion" HeaderText="Direccion" SortExpression="Direccion" />
+              <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Medium" DataField="NroPuerta" HeaderText="NroPuerta" SortExpression="NroPuerta" />
+              <asp:CommandField HeaderStyle-BorderWidth="2px" ControlStyle-Font-Size="Small" ControlStyle-CssClass="btn btn-danger" ShowDeleteButton="True" DeleteText="Eliminar" ButtonType="Button" HeaderText="Eliminar" CausesValidation="True" />
           </Columns>
 
                     <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
