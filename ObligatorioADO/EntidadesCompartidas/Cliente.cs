@@ -16,6 +16,9 @@ namespace EntidadesCompartidas
         public string _Direccion;
         public int _NroPuerta;
 
+        // Constructor Simple
+
+        public Cliente() { }
         // Constructor Completo
         public Cliente(int pCI, string pNom, string pApe, string pTel, string pDir, int pNroP)
         {
