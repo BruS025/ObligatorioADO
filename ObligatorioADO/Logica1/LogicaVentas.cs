@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EntidadesCompartidas;
+using Persistencia;
 
 namespace Logica
 {
@@ -11,7 +12,7 @@ namespace Logica
     {
         public static List<Venta> Buscar(String busqueda)
         {
-            return PersistenciaVentas.Buscar(String busqueda);
+            return PersistenciaVentas.Buscar(busqueda);
         }
 
         public static int Agregar(Venta venta)

@@ -12,7 +12,7 @@ namespace Logica
     {
         public static List<PEnlatado> Buscar(String busqueda)
         {
-            return PersistenciaPPEnlatados.Buscar(busqueda);
+            return PersistenciaPEnlatados.Buscar(busqueda);
         }
 
         public static int Agregar(PEnlatado producto)

@@ -5,6 +5,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using EntidadesCompartidas;
+using Logica;
+
 
 namespace Presentacion
 {
@@ -54,7 +57,17 @@ namespace Presentacion
 
         protected void btBuscar_Click(object sender, EventArgs e)
         {
-            lbResultado.Text = "Buscar";
+            //lbResultado.Text = "Buscar";
+            try
+            {
+                Cliente cliente = LogicaClientes.Buscar(Convert.ToInt32(GridClientes.Rows));                           
+
+                
+            }
+            catch (Exception ex)
+            {
+                lbResultado.Text = ex.Message;
+            }
         }
 
         protected void GridClientes_PageIndexChanging(object sender, GridViewPageEventArgs e)

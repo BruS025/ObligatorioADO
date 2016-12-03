@@ -9,22 +9,26 @@ namespace Persistencia
 {
     public class PersistenciaPCongelados
     {
-        public static int Buscar()
+        public static List<PCongelado> Buscar(String busqueda)
         {
             throw new NotImplementedException();
         }
 
-        public static int Agregar()
+        public static int Agregar(PCongelado producto)
         {
             throw new NotImplementedException();
         }
 
-        public static int Modificar()
+        public static int Modificar(PCongelado product)
         {
             throw new NotImplementedException();
         }
 
-        public static int Eliminar()
+        public static int Eliminar(long cod)
+        {
+            throw new NotImplementedException();
+        }
+        public static List<PCongelado> Listar()
         {
             throw new NotImplementedException();
         }

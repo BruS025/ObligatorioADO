@@ -9,22 +9,27 @@ namespace Persistencia
 {
     public class PersistenciaPEnlatados
     {
-        public static int Buscar()
+        public static List<PEnlatado> Buscar(String busqueda)
         {
             throw new NotImplementedException();
         }
 
-        public static int Agregar()
+        public static int Agregar(PEnlatado producto)
         {
             throw new NotImplementedException();
         }
 
-        public static int Modificar()
+        public static int Modificar(PEnlatado producto)
         {
             throw new NotImplementedException();
         }
 
-        public static int Eliminar()
+        public static int Eliminar(long cod)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static List<PEnlatado> Listar()
         {
             throw new NotImplementedException();
         }
