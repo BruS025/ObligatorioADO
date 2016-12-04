@@ -187,6 +187,9 @@ namespace Persistencia
                     cliente.Cedula = Convert.ToInt32(lector["ciCli"].ToString());
                     cliente.Nombre = lector["nomCli"].ToString();
                     cliente.Apellido = lector["apeCli"].ToString();
+                    cliente.Telefono = lector["telCli"].ToString();
+                    cliente.Direccion = lector["dirCli"].ToString();
+                    cliente.NroPuerta = Convert.ToInt32(lector["nroPueCli"].ToString());
 
                     lista.Add(cliente);
                 }

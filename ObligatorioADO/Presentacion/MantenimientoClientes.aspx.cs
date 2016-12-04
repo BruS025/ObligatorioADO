@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using EntidadesCompartidas;
 using Logica;
-
+using EntidadesCompartidas;
 
 namespace Presentacion
 {
     public partial class MantenimientoClientes : System.Web.UI.Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -57,17 +54,8 @@ namespace Presentacion
 
         protected void btBuscar_Click(object sender, EventArgs e)
         {
-            //lbResultado.Text = "Buscar";
-            try
-            {
-                Cliente cliente = LogicaClientes.Buscar(Convert.ToInt32(GridClientes.Rows));                           
+            lbResultado.Text = "Buscar";
 
-                
-            }
-            catch (Exception ex)
-            {
-                lbResultado.Text = ex.Message;
-            }
         }
 
         protected void GridClientes_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -107,6 +95,44 @@ namespace Presentacion
         {
             GridClientes.DataSource = Session["TaskTable"];
             GridClientes.DataBind();
+        }
+
+        protected void agregarConfirmar_Click(object sender, EventArgs e)
+        {
+
+            try
+                {
+
+            Cliente nuevoCliente = new Cliente();
+
+            nuevoCliente.Cedula = Convert.ToInt32(nuevoDocumento.Value);
+            nuevoCliente.Nombre = nuevoNombre.Value;
+            nuevoCliente.Apellido = nuevoApellido.Value;
+            nuevoCliente.Telefono = nuevoTelefono.Value;
+            nuevoCliente.Direccion = nuevoDireccion.Value;
+            nuevoCliente.NroPuerta = Convert.ToInt32(nuevoPuerta.Value);
+
+            int resultado = LogicaClientes.Agregar(nuevoCliente);
+
+            if (resultado == 1)
+            {
+                lbResultado.Text = "Alumno agregado..";
+
+            }
+
+            else
+            {
+                lbResultado.Text = "No se ha agregado alumno..";
+            }
+
+        }
+
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+        
+
         }
     }
 }

@@ -135,42 +135,42 @@
             <div id="errorModalAgregarCliente"></div>
 			<div class="input-group">
 				<span class="input-group-addon" id="basic-nuevoDoc">Documento</span>
-				<input disabled="disabled" id="nuevoDocumento" value="" type="text" class="form-control" placeholder="CI" aria-describedby="basic-nuevoDoc" required="required"/>
+				<input runat="server" disabled="disabled" name="nuevoDocumento" id="nuevoDocumento" value="" type="text" class="form-control" placeholder="CI" aria-describedby="basic-nuevoDoc" required="required"/>
 			</div>
 			
 			<br />
 
 			<div class="input-group">
 				<span class="input-group-addon" id="basic-nuevoNombre">Nombre</span>
-				<input disabled="disabled" id="nuevoNombre" type="text" class="form-control" placeholder="Nombre de cliente" aria-describedby="basic-nuevoNombre" required="required"/>
+				<input runat="server" disabled="disabled" name="nuevoNombre" id="nuevoNombre" type="text" class="form-control" placeholder="Nombre de cliente" aria-describedby="basic-nuevoNombre" required="required"/>
 			</div>
 			
 			<br />
 
            <div class="input-group">
 				<span class="input-group-addon" id="basic-nuevoApellido">Apellido</span>
-				<input disabled="disabled" id="nuevoApellido" type="text" class="form-control" placeholder="Apellido de cliente" aria-describedby="basic-nuevoApellido" required="required"/>
+				<input runat="server" disabled="disabled" name="nuevoApellido" id="nuevoApellido" type="text" class="form-control" placeholder="Apellido de cliente" aria-describedby="basic-nuevoApellido" required="required"/>
 			</div>
 			
 			<br />
 			
-			<div class="input-group">
-				<span class="input-group-addon" id="basic-Telefono">Telefono</span>
-				<input disabled="disabled" id="nuevoTelefono" type="text" class="form-control" placeholder="Telefono" aria-describedby="basic-Telefono"required="required" />
+            <div class="input-group">
+				<span class="input-group-addon" id="basic-Telefono">Direccion</span>
+				<input runat="server" disabled="disabled" name="nuevoTelefono" id="nuevoTelefono" type="text" class="form-control" placeholder="Telefono" aria-describedby="basic-Telefono" required="required"/>
 			</div>
 			
 			<br />
 
             <div class="input-group">
 				<span class="input-group-addon" id="basic-Direccion">Direccion</span>
-				<input disabled="disabled" id="nuevoDireccion" type="text" class="form-control" placeholder="Direccion" aria-describedby="basic-Direccion" required="required"/>
+				<input runat="server" disabled="disabled" name="nuevoDireccion" id="nuevoDireccion" type="text" class="form-control" placeholder="Direccion" aria-describedby="basic-Direccion" required="required"/>
 			</div>
 			
 			<br />
 
             <div class="input-group">
 				<span class="input-group-addon" id="basic-nroPuerta">Numero de puerta</span>
-				<input disabled="disabled" id="nuevoPuerta" type="text" class="form-control" placeholder="Nro Puerta" aria-describedby="basic-nroPuerta" required="required"/>
+				<input runat="server" disabled="disabled" name="nuevoPuerta" id="nuevoPuerta" type="text" class="form-control" placeholder="Nro Puerta" aria-describedby="basic-nroPuerta" required="required"/>
             </div>
 			
 			<br /> 
@@ -180,7 +180,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" onclick="return deactivateModal()">Cancelar</button>
-        <button id="confirmar" type="button" class="btn btn-primary">Agregar</button>
+        <asp:Button ID="agregarConfirmar" onclientclick="return deactivateModal();" CssClass="btn btn-default" runat="server" Text="Agregar" Height="34px" OnClick="agregarConfirmar_Click" />
       </div>
     </div>
   </div>
@@ -189,45 +189,46 @@
 <!-- Java Script: Activar y Desactivar modal -->
 <script>
 
+    function agregarCliente() {
+        
+    }
+
     function activateModal() {
 
         $('#modalAgregar').modal({ backdrop: 'static', keyboard: false })
         $("#modalAgregar").modal('show');
-        nuevoDocumento.disabled = false;
-        nuevoNombre.disabled = false;
-        nuevoApellido.disabled = false;
-        nuevoTelefono.disabled = false;
-        nuevoDireccion.disabled = false;
-        nuevoPuerta.disabled = false;
+        ContentPlaceHolder1_nuevoDocumento.disabled = false;
+        ContentPlaceHolder1_nuevoNombre.disabled = false;
+        ContentPlaceHolder1_nuevoApellido.disabled = false;
+        ContentPlaceHolder1_nuevoTelefono.disabled = false;
+        ContentPlaceHolder1_nuevoDireccion.disabled = false;
+        ContentPlaceHolder1_nuevoPuerta.disabled = false;
     }
 
     function deactivateModal() {
 
-        $("#modalAgregar").modal('show');
-        nuevoDocumento.disabled = true;
-        nuevoDocumento.value = "";
+            $("#modalAgregar").modal('show');
+            ContentPlaceHolder1_nuevoDocumento.disabled = true;
+            ContentPlaceHolder1_nuevoDocumento.value = "";
 
-        nuevoNombre.disabled = true;
-        nuevoNombre.value = "";
+            ContentPlaceHolder1_nuevoNombre.disabled = true;
+            ContentPlaceHolder1_nuevoNombre.value = "";
 
-        nuevoApellido.disabled = true;
-        nuevoApellido.value = "";
+            ContentPlaceHolder1_nuevoApellido.disabled = true;
+            ContentPlaceHolder1_nuevoApellido.value = "";
 
-        nuevoTelefono.disabled = true;
-        nuevoTelefono.value = "";
+            ContentPlaceHolder1_nuevoTelefono.disabled = true;
+            ContentPlaceHolder1_nuevoTelefono.value = "";
 
-        nuevoDireccion.disabled = true;
-        nuevoDireccion.value = "";
+            ContentPlaceHolder1_nuevoDireccion.disabled = true;
+            ContentPlaceHolder1_nuevoDireccion.value = "";
 
-        nuevoPuerta.disabled = true;
-        nuevoPuerta.value = "";
-
+            ContentPlaceHolder1_nuevoPuerta.disabled = true;
+            ContentPlaceHolder1_nuevoPuerta.value = "";
 
     }
 
 </script>
-
-
 
 
 </asp:Content>
