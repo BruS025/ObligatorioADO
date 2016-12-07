@@ -434,20 +434,6 @@ AS
 BEGIN
 	SELECT * FROM Productos p JOIN Enlatados e ON p.codB=e.codB
 END
-GO	
-CREATE PROCEDURE SP_ListarCon
-AS
-BEGIN
-	SELECT * FROM Productos p JOIN Congelados c ON p.codB=c.codB 
-END
-GO
-
-CREATE PROCEDURE SP_ListarEn
-AS
-BEGIN
-	SELECT * FROM Productos p JOIN Enlatados e ON p.codB=e.codB
-END
-GO	
 
 CREATE PROCEDURE SP_Listar
 AS
