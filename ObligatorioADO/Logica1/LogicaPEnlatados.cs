@@ -10,9 +10,9 @@ namespace Logica
 {
     public class LogicaPEnlatados
     {
-        public static List<PEnlatado> Buscar(String busqueda)
+        public static PEnlatado Buscar(long cod)
         {
-            return PersistenciaPEnlatados.Buscar(busqueda);
+            return PersistenciaPEnlatados.Buscar(cod);
         }
 
         public static int Agregar(PEnlatado producto)
