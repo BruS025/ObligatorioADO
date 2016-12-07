@@ -11,6 +11,8 @@ namespace EntidadesCompartidas
         //Atributos
         private bool _abreFacil;
 
+        //Constructor Simple
+        public PEnlatado () { }
         //Costructor Completo
         public PEnlatado(int pCod, string pNom, DateTime pFecha, double pPrecio, bool pAbreFacil)
             : base(pCod, pNom, pFecha, pPrecio)

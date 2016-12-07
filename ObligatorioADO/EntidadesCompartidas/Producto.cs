@@ -15,6 +15,8 @@ namespace EntidadesCompartidas
         private DateTime _FechaVto;
         private double _Precio;
 
+        //Constructor Simple
+        public Producto() { }
         //Constructor Completo
         public Producto(int pCod, string pNom, DateTime pFecha, double pPrecio)
         {

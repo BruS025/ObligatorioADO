@@ -12,6 +12,9 @@ namespace EntidadesCompartidas
         // Atributos
         private double _Peso;
 
+        //Constructor Simple
+        public PCongelado() { }
+        
         // Costructor Completo
         public PCongelado(int pCod, string pNom, DateTime pFecha, double pPrecio, double pPeso)
             : base(pCod, pNom, pFecha, pPrecio)
