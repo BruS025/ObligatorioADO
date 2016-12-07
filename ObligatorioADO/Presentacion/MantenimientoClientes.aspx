@@ -44,50 +44,50 @@
             <asp:Button ID="btnAgregar" CssClass="btn btn-default" runat="server" Text="Agregar" Height="34px" OnClick="btnAgregar_Click" />            
         </div>
 
-		<div class="col-md-2">  
+	<div class="col-md-2">  
             <br />            
-			<input runat="server" id="nuevoDocumento" value="" type="text" class="form-control" placeholder="CI" aria-describedby="basic-nuevoDoc" />
+	    <input runat="server" id="nuevoDocumento" value="" type="text" class="form-control" placeholder="CI" aria-describedby="basic-nuevoDoc" />
         </div>
 			
-			<br />
+	<br />
 
-			<div class="col-md-3">
+	<div class="col-md-3">
+		<br />
+		<input runat="server" id="nuevoNombre" type="text" class="form-control" placeholder="Nombre de cliente" aria-describedby="basic-nuevoNombre"/>
+	</div>
+			
+	<br />
+
+	<div class="col-md-3">
                 <br />
-				<input runat="server" id="nuevoNombre" type="text" class="form-control" placeholder="Nombre de cliente" aria-describedby="basic-nuevoNombre"/>
-			</div>
+		<input runat="server" id="nuevoApellido" type="text" class="form-control" placeholder="Apellido de cliente" aria-describedby="basic-nuevoApellido"/>
+	</div>
 			
-			<br />
+	<br />
+			
+        <div class="col-md-2">
+		<br />
+		<input runat="server" id="nuevoTelefono" type="text" class="form-control" placeholder="Telefono" aria-describedby="basic-Telefono"/>
+	</div>
+			
+	<br />
 
-           <div class="col-md-3">
-               <br />
-				<input runat="server" id="nuevoApellido" type="text" class="form-control" placeholder="Apellido de cliente" aria-describedby="basic-nuevoApellido"/>
-			</div>
+        <div class="col-md-3">
+        	<br />
+		<input runat="server" id="nuevoDireccion" type="text" class="form-control" placeholder="Direccion" aria-describedby="basic-Direccion"/>
+	</div>
 			
-			<br />
-			
+	<br />
+
             <div class="col-md-2">
                 <br />
-				<input runat="server" id="nuevoTelefono" type="text" class="form-control" placeholder="Telefono" aria-describedby="basic-Telefono"/>
-			</div>
-			
-			<br />
-
-            <div class="col-md-3">
-                <br />
-				<input runat="server" id="nuevoDireccion" type="text" class="form-control" placeholder="Direccion" aria-describedby="basic-Direccion"/>
-			</div>
-			
-			<br />
-
-            <div class="col-md-1">
-                <br />
-				<input runat="server" id="nuevoPuerta" type="text" class="form-control" placeholder="Nro Puerta" aria-describedby="basic-nroPuerta"/>
+		<input runat="server" id="nuevoPuerta" type="text" class="form-control" placeholder="Nro. Puerta" aria-describedby="basic-nroPuerta"/>
             </div>
 			
-			<br /> 
-            </div>
-			
-		</div>
+	<br /> 
+		
+	</div>			
+</div>
 
 <br />
 
