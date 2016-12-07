@@ -116,13 +116,13 @@ namespace Presentacion
 
             if (resultado == 1)
             {
-                lbResultado.Text = "Alumno agregado..";
+                lbResultado.Text = "Cliente agregado..";
 
             }
 
             else
             {
-                lbResultado.Text = "No se ha agregado alumno..";
+                lbResultado.Text = "No se ha agregado Cliente..";
             }
 
         }
@@ -138,6 +138,39 @@ namespace Presentacion
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
 
+            try
+            {
+       
+            Cliente nuevoCliente = new Cliente();
+
+            nuevoCliente.Cedula = Convert.ToInt32(nuevoDocumento.Value);
+            nuevoCliente.Nombre = nuevoNombre.Value;
+            nuevoCliente.Apellido = nuevoApellido.Value;
+            nuevoCliente.Telefono = nuevoTelefono.Value;
+            nuevoCliente.Direccion = nuevoDireccion.Value;
+            nuevoCliente.NroPuerta = Convert.ToInt32(nuevoPuerta.Value);
+
+            int resultado = LogicaClientes.Agregar(nuevoCliente);
+
+            if (resultado == 1)
+            {
+                lbResultado.Text = "Cliente agregado..";
+
+            }
+
+            else
+            {
+                lbResultado.Text = "No se ha agregado Cliente..";
+            }
+
+            }
+
+            catch (Exception ex)
+        {
+            throw ex;
         }
+}
+
     }
 }
+ 
