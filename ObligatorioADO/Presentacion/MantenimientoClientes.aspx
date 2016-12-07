@@ -26,23 +26,68 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-6 col-lg-6">
-            <div class="input-group">
+
+        <div class="col-md-12 col-lg-12">
+            <div class="input-group col-md-6 col-lg-6">
                 <span class="input-group-addon" id="basic-addon1">Buscar cliente</span>
                 <input id="txtBuscar" type="text" class="form-control" placeholder="Ingrese caracteres de busqueda.." aria-describedby="basic-addon1"/>
                 <span class="input-group-btn">
-                    <asp:Button ID="btBuscar" CssClass="btn btn-default" runat="server" Text="Buscar" OnClick="btBuscar_Click" Height="34px" />
+                    <asp:Button ID="btBuscar" CssClass="btn btn-default" runat="server" Text="Buscar" OnClick="btnAgregar_Click" Height="34px" />
                 </span>
             </div>
         </div>
-        <div class="col-md-1 col-lg-1"> 
-            <!-- Activa el modal --> 
-            <button onclick="return activateModal()" id="btAgregar" data-backdrop="static" type="button" data-keyboard="false" class="btn btn-default">Agregar</button>   
-            <br />            
-        </div>  
 
-    </div>
-</div>
+        <div class="container">
+
+        <div class="col-md-1">
+            <br />
+            <asp:Button ID="btnAgregar" CssClass="btn btn-default" runat="server" Text="Agregar" Height="34px" OnClick="btnAgregar_Click" />            
+        </div>
+
+		<div class="col-md-2">  
+            <br />            
+			<input runat="server" id="nuevoDocumento" value="" type="text" class="form-control" placeholder="CI" aria-describedby="basic-nuevoDoc" />
+        </div>
+			
+			<br />
+
+			<div class="col-md-3">
+                <br />
+				<input runat="server" id="nuevoNombre" type="text" class="form-control" placeholder="Nombre de cliente" aria-describedby="basic-nuevoNombre"/>
+			</div>
+			
+			<br />
+
+           <div class="col-md-3">
+               <br />
+				<input runat="server" id="nuevoApellido" type="text" class="form-control" placeholder="Apellido de cliente" aria-describedby="basic-nuevoApellido"/>
+			</div>
+			
+			<br />
+			
+            <div class="col-md-2">
+                <br />
+				<input runat="server" id="nuevoTelefono" type="text" class="form-control" placeholder="Telefono" aria-describedby="basic-Telefono"/>
+			</div>
+			
+			<br />
+
+            <div class="col-md-3">
+                <br />
+				<input runat="server" id="nuevoDireccion" type="text" class="form-control" placeholder="Direccion" aria-describedby="basic-Direccion"/>
+			</div>
+			
+			<br />
+
+            <div class="col-md-1">
+                <br />
+				<input runat="server" id="nuevoPuerta" type="text" class="form-control" placeholder="Nro Puerta" aria-describedby="basic-nroPuerta"/>
+            </div>
+			
+			<br /> 
+            </div>
+			
+		</div>
 
 <br />
 
@@ -121,70 +166,6 @@
     </div>
 </div>
 
-
-<!-- Modal --> <!-- Agregar class= "modal hide fade" -->
-<div class="modal fade" id="modalAgregar" tabindex="-1" role="dialog" aria-labelledby="tituloModal">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="return deactivateModal()" ><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="tituloModal">Agregar nuevo cliente</h4>
-      </div>
-      <div class="modal-body">
-		<div class="form-horizontal" id="formModal">
-            <div id="errorModalAgregarCliente"></div>
-			<div class="input-group">
-				<span class="input-group-addon" id="basic-nuevoDoc">Documento</span>
-				<input runat="server" disabled="disabled" name="nuevoDocumento" id="nuevoDocumento" value="" type="text" class="form-control" placeholder="CI" aria-describedby="basic-nuevoDoc" required="required"/>
-			</div>
-			
-			<br />
-
-			<div class="input-group">
-				<span class="input-group-addon" id="basic-nuevoNombre">Nombre</span>
-				<input runat="server" disabled="disabled" name="nuevoNombre" id="nuevoNombre" type="text" class="form-control" placeholder="Nombre de cliente" aria-describedby="basic-nuevoNombre" required="required"/>
-			</div>
-			
-			<br />
-
-           <div class="input-group">
-				<span class="input-group-addon" id="basic-nuevoApellido">Apellido</span>
-				<input runat="server" disabled="disabled" name="nuevoApellido" id="nuevoApellido" type="text" class="form-control" placeholder="Apellido de cliente" aria-describedby="basic-nuevoApellido" required="required"/>
-			</div>
-			
-			<br />
-			
-            <div class="input-group">
-				<span class="input-group-addon" id="basic-Telefono">Direccion</span>
-				<input runat="server" disabled="disabled" name="nuevoTelefono" id="nuevoTelefono" type="text" class="form-control" placeholder="Telefono" aria-describedby="basic-Telefono" required="required"/>
-			</div>
-			
-			<br />
-
-            <div class="input-group">
-				<span class="input-group-addon" id="basic-Direccion">Direccion</span>
-				<input runat="server" disabled="disabled" name="nuevoDireccion" id="nuevoDireccion" type="text" class="form-control" placeholder="Direccion" aria-describedby="basic-Direccion" required="required"/>
-			</div>
-			
-			<br />
-
-            <div class="input-group">
-				<span class="input-group-addon" id="basic-nroPuerta">Numero de puerta</span>
-				<input runat="server" disabled="disabled" name="nuevoPuerta" id="nuevoPuerta" type="text" class="form-control" placeholder="Nro Puerta" aria-describedby="basic-nroPuerta" required="required"/>
-            </div>
-			
-			<br /> 
-			
-		</div>
-        Desea agregar este cliente?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="return deactivateModal()">Cancelar</button>
-        <asp:Button ID="agregarConfirmar" onclientclick="return deactivateModal();" CssClass="btn btn-default" runat="server" Text="Agregar" Height="34px" OnClick="agregarConfirmar_Click" />
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- Java Script: Activar y Desactivar modal -->
 <script>

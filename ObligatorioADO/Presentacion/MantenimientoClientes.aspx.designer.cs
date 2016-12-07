@@ -22,31 +22,13 @@ namespace Presentacion {
         protected global::System.Web.UI.WebControls.Button btBuscar;
         
         /// <summary>
-        /// GridClientes control.
+        /// btnAgregar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridClientes;
-        
-        /// <summary>
-        /// lbResultado control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbResultado;
-        
-        /// <summary>
-        /// btVolver control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btVolver;
+        protected global::System.Web.UI.WebControls.Button btnAgregar;
         
         /// <summary>
         /// nuevoDocumento control.
@@ -103,12 +85,30 @@ namespace Presentacion {
         protected global::System.Web.UI.HtmlControls.HtmlInputText nuevoPuerta;
         
         /// <summary>
-        /// agregarConfirmar control.
+        /// GridClientes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button agregarConfirmar;
+        protected global::System.Web.UI.WebControls.GridView GridClientes;
+        
+        /// <summary>
+        /// lbResultado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbResultado;
+        
+        /// <summary>
+        /// btVolver control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btVolver;
     }
 }
