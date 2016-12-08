@@ -167,10 +167,14 @@ namespace Presentacion
 
             catch (Exception ex)
         {
-            throw ex;
+                lbResultado.Text = ex.Message;
         }
 }
 
+        protected void btBuscar_Click1(object sender, EventArgs e)
+        {
+           
+        }
     }
 }
  
