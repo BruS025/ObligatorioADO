@@ -32,7 +32,7 @@
                 <span class="input-group-addon" id="basic-addon1">Buscar cliente</span>
                 <input id="txtBuscar" type="text" class="form-control" placeholder="Ingrese caracteres de busqueda.." aria-describedby="basic-addon1"/>
                 <span class="input-group-btn">
-                    <asp:Button ID="btBuscar" CssClass="btn btn-default" runat="server" Text="Buscar" OnClick="btnAgregar_Click" Height="34px" />
+                    <asp:Button ID="btBuscar" CssClass="btn btn-default" runat="server" Text="Buscar" OnClick="btnBuscar_Click" Height="34px" />
                 </span>
             </div>
         </div>
@@ -87,6 +87,7 @@
 	<br /> 
 		
 	</div>			
+</div>
 </div>
 
 <br />
