@@ -108,7 +108,7 @@
         ShowFooter="False"
         ShowHeaderWhenEmpty="True"
         PageSize="10"
-        Font-Size="Large" CaptionAlign="Top">
+        Font-Size="Large" CaptionAlign="Top" OnRowDeleted="GridClientes_RowDeleted" OnRowDeleting="GridClientes_RowDeleting">
 
         <AlternatingRowStyle BackColor="White" />
 

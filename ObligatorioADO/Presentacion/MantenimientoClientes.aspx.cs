@@ -112,6 +112,7 @@ namespace Presentacion
             GridClientes.DataBind();
         }
 
+        // Cargar Grilla
         private void CargarGrilla()
         {
             List<Cliente> listadoClientes = LogicaClientes.Listar();
@@ -131,46 +132,7 @@ namespace Presentacion
                 lbResultado.Text = "No existen clientes registrados";
             }
         }
-
-
-
-        protected void agregarConfirmar_Click(object sender, EventArgs e)
-                {
-
-                    try
-                {
-
-            Cliente nuevoCliente = new Cliente();
-
-            nuevoCliente.Cedula = Convert.ToInt32(nuevoDocumento.Value);
-            nuevoCliente.Nombre = nuevoNombre.Value;
-            nuevoCliente.Apellido = nuevoApellido.Value;
-            nuevoCliente.Telefono = nuevoTelefono.Value;
-            nuevoCliente.Direccion = nuevoDireccion.Value;
-            nuevoCliente.NroPuerta = Convert.ToInt32(nuevoPuerta.Value);
-
-            int resultado = LogicaClientes.Agregar(nuevoCliente);
-
-            if (resultado == 1)
-            {
-                lbResultado.Text = "Cliente agregado..";
-
-            }
-
-            else
-            {
-                lbResultado.Text = "No se ha agregado Cliente..";
-            }
-
-        }
-
-        catch (Exception ex)
-        {
-            throw ex;
-        }
         
-
-        }
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -214,5 +176,16 @@ namespace Presentacion
 
         }
 
-}
+        protected void GridClientes_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            //LogicaClientes.Eliminar(GridClientes.Rows[]); Indicar la cedula de la row seleccionada
+            lbResultado.Text = "Eliminado";
+        }
+
+        protected void GridClientes_RowDeleted(object sender, GridViewDeletedEventArgs e)
+        {
+            CargarGrilla();
+            lbResultado.Text = "Eliminado2";
+        }
+    }
 }
