@@ -541,3 +541,17 @@ listar anuales
 	cantidad 
 	primary 
 )*/
+
+
+-- Datos de prueba Clientes
+insert into clientes values (1234567,'Rodrigo','Antognazza',123456789,'Casa123',1414);
+insert into clientes values (1111111,'Rodrigo','Antognazza',123456789,'Casa123',1414);
+insert into clientes values (2222222,'Rodrigo','Antognazza',123456789,'Casa123',1414);
+insert into clientes values (3333333,'Rodrigo','Antognazza',123456789,'Casa123',1414);
+insert into clientes values (4444444,'Rodrigo','Antognazza',123456789,'Casa123',1414);
+insert into clientes values (5555555,'Rodrigo','Antognazza',123456789,'Casa123',1414);
+insert into clientes values (6666666,'Rodrigo','Antognazza',123456789,'Casa123',1414);
+insert into clientes values (7777777,'Rodrigo','Antognazza',123456789,'Casa123',1414);
+insert into clientes values (8888888,'Rodrigo','Antognazza',123456789,'Casa123',1414);
+insert into clientes values (9999999,'Rodrigo','Antognazza',123456789,'Casa123',1414);
+insert into clientes values (9999299,'Rodrigo','Antognazza',123456789,'Casa123',1414);

@@ -8,7 +8,7 @@ namespace Persistencia
 {
     public class Conexion
     {
-        private static string cnnString = "Data Source=.\\SQLEXPRESS;Initial Catalog = OBLIGATORIO; Integrated Security= true;";
+        private static string cnnString = "Data Source=.;Initial Catalog = OBLIGATORIO; Integrated Security= true;";
 
         public static string CnnString
         {

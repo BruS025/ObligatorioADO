@@ -4,6 +4,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Logica;
 using EntidadesCompartidas;
+using System.Collections.Generic;
 
 namespace Presentacion
 {
@@ -14,6 +15,15 @@ namespace Presentacion
         {
             if (!Page.IsPostBack)
             {
+
+                CargarGrilla();
+
+                /*
+                foreach (Cliente item in listadoClientes)
+                {
+                    LBMaterias.Items.Add(item.Id + " - " + item.Nombre);
+                }
+
                 // Create a new table.
                 DataTable taskTable = new DataTable("TaskList");
 
@@ -43,37 +53,42 @@ namespace Presentacion
                 Session["TaskTable"] = taskTable;
 
                 //Bind data to the GridView control.
-                BindData();
+                BindData();*/
             }
         }
 
+        // Volver
         protected void btVolver_Click(object sender, EventArgs e)
         {
             Response.Redirect("Default.aspx");
         }
 
+        // Buscar
         protected void btBuscar_Click(object sender, EventArgs e)
         {
             lbResultado.Text = "Buscar";
 
         }
 
+        // Index Grilla
         protected void GridClientes_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridClientes.PageIndex = e.NewPageIndex;
-            BindData();
+            CargarGrilla();
         }
 
+        // Cancel Grilla
         protected void GridClientes_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             GridClientes.EditIndex = -1;
-            BindData();
+            CargarGrilla();
         }
 
+        // Editig Grilla
         protected void GridClientes_RowEditing(object sender, GridViewEditEventArgs e)
         {
             GridClientes.EditIndex = e.NewEditIndex;
-            BindData();
+            CargarGrilla();
         }
 
         protected void GridClientes_RowUpdating(object sender, GridViewUpdateEventArgs e)
@@ -88,7 +103,7 @@ namespace Presentacion
 
             GridClientes.EditIndex = -1;
 
-            BindData();
+            CargarGrilla();
         }
 
         private void BindData()
@@ -97,10 +112,32 @@ namespace Presentacion
             GridClientes.DataBind();
         }
 
-        protected void agregarConfirmar_Click(object sender, EventArgs e)
+        private void CargarGrilla()
         {
+            List<Cliente> listadoClientes = LogicaClientes.Listar();
 
-            try
+            GridClientes.DataSource = null;
+
+            if (listadoClientes != null)
+            {
+                GridClientes.Visible = true;
+                GridClientes.DataSource = listadoClientes;
+                GridClientes.DataBind();
+            }
+
+            else
+            {
+                GridClientes.Visible = false;
+                lbResultado.Text = "No existen clientes registrados";
+            }
+        }
+
+
+
+        protected void agregarConfirmar_Click(object sender, EventArgs e)
+                {
+
+                    try
                 {
 
             Cliente nuevoCliente = new Cliente();
@@ -176,5 +213,6 @@ namespace Presentacion
         {
 
         }
+
 }
 }

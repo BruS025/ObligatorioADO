@@ -77,7 +77,7 @@ namespace EntidadesCompartidas
                 try
                 {
                     //verifica solo numeros
-                    Convert.ToInt32(value.Trim());
+                    Convert.ToInt64(value.Trim());
 
                     if ((value.Trim().Length == 8) || (value.Trim().Length == 9))
                         _Telefono = value.Trim();

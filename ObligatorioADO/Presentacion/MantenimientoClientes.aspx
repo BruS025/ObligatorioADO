@@ -45,44 +45,34 @@
         </div>
 
 	<div class="col-md-2">  
-            <br />            
+        <br />            
 	    <input runat="server" id="nuevoDocumento" value="" type="text" class="form-control" placeholder="CI" aria-describedby="basic-nuevoDoc" />
         </div>
-			
-	<br />
 
-	<div class="col-md-3">
+	<div class="col-md-2">
 		<br />
 		<input runat="server" id="nuevoNombre" type="text" class="form-control" placeholder="Nombre de cliente" aria-describedby="basic-nuevoNombre"/>
-	</div>
-			
-	<br />
+	</div>			
 
-	<div class="col-md-3">
+	<div class="col-md-2">
                 <br />
 		<input runat="server" id="nuevoApellido" type="text" class="form-control" placeholder="Apellido de cliente" aria-describedby="basic-nuevoApellido"/>
-	</div>
+	</div>			
 			
-	<br />
-			
-        <div class="col-md-2">
+   <div class="col-md-2">
 		<br />
 		<input runat="server" id="nuevoTelefono" type="text" class="form-control" placeholder="Telefono" aria-describedby="basic-Telefono"/>
-	</div>
-			
-	<br />
+	</div>		
 
-        <div class="col-md-3">
-        	<br />
+    <div class="col-md-2">
+        <br />
 		<input runat="server" id="nuevoDireccion" type="text" class="form-control" placeholder="Direccion" aria-describedby="basic-Direccion"/>
-	</div>
-			
-	<br />
+	</div>			
 
-            <div class="col-md-2">
-                <br />
+    <div class="col-md-1">
+        <br />
 		<input runat="server" id="nuevoPuerta" type="text" class="form-control" placeholder="Nro. Puerta" aria-describedby="basic-nroPuerta"/>
-            </div>
+    </div>
 			
 	<br /> 
 		
@@ -124,12 +114,12 @@
 
           <Columns>
               <asp:CommandField HeaderStyle-BorderWidth="2px" ControlStyle-Font-Size="Small" ShowEditButton="True" ShowCancelButton="true" ControlStyle-CssClass="btn btn-default" EditText="Editar" CancelText="Cancelar" ButtonType="Button" HeaderText="Acciones" UpdateText="Guardar" CausesValidation="True" InsertVisible="True" />
-              <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Medium" DataField="Cedula" HeaderText="Cedula" SortExpression="Cedula" ReadOnly ="True" />
-              <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Medium" DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
-              <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Medium" DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
-              <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Medium" DataField="Telefono" HeaderText="Telefono" SortExpression="Telefono" />
-              <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Medium" DataField="Direccion" HeaderText="Direccion" SortExpression="Direccion" />
-              <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Medium" DataField="NroPuerta" HeaderText="NroPuerta" SortExpression="NroPuerta" />
+              <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Small" DataField="Cedula" HeaderText="Cedula" SortExpression="Cedula" ReadOnly ="True" />
+              <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Small" DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
+              <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Small" DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
+              <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Small" DataField="Telefono" HeaderText="Telefono" SortExpression="Telefono" />
+              <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Small" DataField="Direccion" HeaderText="Direccion" SortExpression="Direccion" />
+              <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Small" DataField="NroPuerta" HeaderText="NroPuerta" SortExpression="NroPuerta" />
               <asp:CommandField HeaderStyle-BorderWidth="2px" ControlStyle-Font-Size="Small" ControlStyle-CssClass="btn btn-danger" ShowDeleteButton="True" DeleteText="Eliminar" ButtonType="Button" HeaderText="Eliminar" CausesValidation="True" />
           </Columns>
 
