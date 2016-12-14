@@ -41,7 +41,8 @@
 
         <div class="col-md-1">
             <br />
-            <asp:Button ID="btnAgregar" CssClass="btn btn-default" runat="server" Text="Agregar" Height="34px" OnClick="btnAgregar_Click" />            
+            <asp:Button ID="btnAgregar" CssClass="btn btn-default" runat="server" Text="Agregar" Height="34px" OnClick="btnAgregar_Click" /> 
+            <asp:Button ID="btnModificar" CssClass="btn btn-default" runat="server" Text="Modificar" Height="34px" OnClick="btnModificar_Click" Visible ="false" />           
         </div>
 
 	<div class="col-md-2">  
@@ -51,12 +52,12 @@
 
 	<div class="col-md-2">
 		<br />
-		<input runat="server" id="nuevoNombre" type="text" class="form-control" placeholder="Nombre de cliente" aria-describedby="basic-nuevoNombre"/>
+		<input runat="server" id="nuevoNombre" type="text" class="form-control" placeholder="Nombre" aria-describedby="basic-nuevoNombre"/>
 	</div>			
 
 	<div class="col-md-2">
                 <br />
-		<input runat="server" id="nuevoApellido" type="text" class="form-control" placeholder="Apellido de cliente" aria-describedby="basic-nuevoApellido"/>
+		<input runat="server" id="nuevoApellido" type="text" class="form-control" placeholder="Apellido" aria-describedby="basic-nuevoApellido"/>
 	</div>			
 			
    <div class="col-md-2">
@@ -90,10 +91,7 @@
         ID="GridClientes" 
         runat="server" 
         AutoGenerateEditButton="false" 
-        AllowPaging="true"
-        OnRowEditing="GridClientes_RowEditing"         
-        OnRowCancelingEdit="GridClientes_RowCancelingEdit" 
-        OnRowUpdating="GridClientes_RowUpdating"
+        AllowPaging="true"       
         OnPageIndexChanging="GridClientes_PageIndexChanging"
           
         AutoGenerateColumns="False"
@@ -108,19 +106,19 @@
         ShowFooter="False"
         ShowHeaderWhenEmpty="True"
         PageSize="10"
-        Font-Size="Large" CaptionAlign="Top" OnRowDeleted="GridClientes_RowDeleted" OnRowDeleting="GridClientes_RowDeleting">
+        Font-Size="Large" CaptionAlign="Top">
 
         <AlternatingRowStyle BackColor="White" />
 
           <Columns>
-              <asp:CommandField HeaderStyle-BorderWidth="2px" ControlStyle-Font-Size="Small" ShowEditButton="True" ShowCancelButton="true" ControlStyle-CssClass="btn btn-default" EditText="Editar" CancelText="Cancelar" ButtonType="Button" HeaderText="Acciones" UpdateText="Guardar" CausesValidation="True" InsertVisible="True" />
+              <asp:ButtonField HeaderStyle-BorderWidth="2px" ControlStyle-Font-Size="Small" ControlStyle-CssClass="btn btn-default" ButtonType="Button" HeaderText="Acciones" Text ="Editar"/>
               <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Small" DataField="Cedula" HeaderText="Cedula" SortExpression="Cedula" ReadOnly ="True" />
               <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Small" DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
               <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Small" DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
               <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Small" DataField="Telefono" HeaderText="Telefono" SortExpression="Telefono" />
               <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Small" DataField="Direccion" HeaderText="Direccion" SortExpression="Direccion" />
               <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Small" DataField="NroPuerta" HeaderText="NroPuerta" SortExpression="NroPuerta" />
-              <asp:CommandField HeaderStyle-BorderWidth="2px" ControlStyle-Font-Size="Small" ControlStyle-CssClass="btn btn-danger" ShowDeleteButton="True" DeleteText="Eliminar" ButtonType="Button" HeaderText="Eliminar" CausesValidation="True" />
+              <asp:ButtonField HeaderStyle-BorderWidth="2px" ControlStyle-Font-Size="Small" ControlStyle-CssClass="btn btn-danger" ButtonType="Button" HeaderText="Eliminar" CausesValidation="True" Text ="Eliminar"/>
           </Columns>
 
                     <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
@@ -132,7 +130,7 @@
                     <SortedAscendingHeaderStyle BackColor="#4D0000" />
                     <SortedDescendingCellStyle BackColor="#FCF6C0" />
                     <SortedDescendingHeaderStyle BackColor="#820000" />
-                     <PagerStyle BackColor="#B50000" ForeColor="White" />
+                    <PagerStyle BackColor="#B50000" ForeColor="White" />
 
       </asp:GridView>
     </div>
@@ -152,7 +150,6 @@
             <br />
             <br />
          </div>
-
 
     </div>
 </div>

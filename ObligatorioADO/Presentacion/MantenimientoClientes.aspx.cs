@@ -77,41 +77,6 @@ namespace Presentacion
             CargarGrilla();
         }
 
-        // Cancel Grilla
-        protected void GridClientes_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
-        {
-            GridClientes.EditIndex = -1;
-            CargarGrilla();
-        }
-
-        // Editig Grilla
-        protected void GridClientes_RowEditing(object sender, GridViewEditEventArgs e)
-        {
-            GridClientes.EditIndex = e.NewEditIndex;
-            CargarGrilla();
-        }
-
-        protected void GridClientes_RowUpdating(object sender, GridViewUpdateEventArgs e)
-        {
-            DataTable dt = (DataTable)Session["TaskTable"];
-
-            //Update the values.
-            GridViewRow row = GridClientes.Rows[e.RowIndex];
-            //dt.Rows[row.DataItemIndex]["Id"] = ((TextBox)(row.Cells[1].Controls[0])).Text;
-            dt.Rows[row.DataItemIndex]["Description"] = ((TextBox)(row.Cells[2].Controls[0])).Text;
-            dt.Rows[row.DataItemIndex]["IsComplete"] = ((CheckBox)(row.Cells[3].Controls[0])).Checked;
-
-            GridClientes.EditIndex = -1;
-
-            CargarGrilla();
-        }
-
-        private void BindData()
-        {
-            GridClientes.DataSource = Session["TaskTable"];
-            GridClientes.DataBind();
-        }
-
         // Cargar Grilla
         private void CargarGrilla()
         {
@@ -139,6 +104,9 @@ namespace Presentacion
 
             try
             {
+
+                btnAgregar.Visible = false;
+                btnModificar.Visible = true;
        
             Cliente nuevoCliente = new Cliente();
 
@@ -176,16 +144,10 @@ namespace Presentacion
 
         }
 
-        protected void GridClientes_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        protected void btnModificar_Click(object sender, EventArgs e)
         {
-            //LogicaClientes.Eliminar(GridClientes.Rows[]); Indicar la cedula de la row seleccionada
-            lbResultado.Text = "Eliminado";
-        }
-
-        protected void GridClientes_RowDeleted(object sender, GridViewDeletedEventArgs e)
-        {
-            CargarGrilla();
-            lbResultado.Text = "Eliminado2";
+            btnAgregar.Visible = true;
+            btnModificar.Visible = false;
         }
     }
 }
