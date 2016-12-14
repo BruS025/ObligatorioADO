@@ -5,6 +5,7 @@ using System.Web.UI.WebControls;
 using Logica;
 using EntidadesCompartidas;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 
 namespace Presentacion
 {
@@ -141,13 +142,57 @@ namespace Presentacion
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
+            try
+            {
 
+                Cliente cliente = LogicaClientes.Buscar(Convert.ToInt32(nuevoDocumento.Value));
+                
+                cliente.Nombre = nuevoNombre.Value;
+                cliente.Apellido = nuevoApellido.Value;
+                cliente.Telefono = nuevoTelefono.Value;
+                cliente.Direccion = nuevoDireccion.Value;
+                cliente.NroPuerta = Convert.ToInt32(nuevoPuerta.Value);
+            }
+            catch (Exception ex)
+            {
+                lbResultado.Text = ex.Message;
+            }
         }
 
         protected void btnModificar_Click(object sender, EventArgs e)
         {
             btnAgregar.Visible = true;
             btnModificar.Visible = false;
+
+            try
+            {
+               
+            Cliente cliente = new Cliente();
+            cliente.Cedula = Convert.ToInt32(Convert.ToInt32(nuevoDocumento.Value));
+            cliente.Nombre = nuevoNombre.Value;
+            cliente.Apellido = nuevoApellido.Value;
+            cliente.Telefono = nuevoTelefono.Value;
+            cliente.Direccion = nuevoDireccion.Value;
+            cliente.NroPuerta = Convert.ToInt32(nuevoPuerta.Value);
+
+
+
+            int resultado = LogicaClientes.Modificar(cliente);
+
+            if (resultado == 1)
+            {
+                lbResultado.Text = "Cliente Modificado";
+            }
+            else
+            {
+                lbResultado.Text = "No se pudo modificar";
+            }
+        }
+        
+            catch (Exception ex)
+            {
+                lbResultado.Text = ex.Message;
+            }
         }
     }
 }
