@@ -58,9 +58,13 @@ namespace Presentacion
 
             if (listadoClientes != null)
             {
-                GridClientes.Visible = true;
-                GridClientes.DataSource = listadoClientes;
-                GridClientes.DataBind();
+                if (listadoClientes.Count > 0 )
+                {
+                    GridClientes.Visible = true;
+                    GridClientes.DataSource = listadoClientes;
+                    GridClientes.DataBind();
+                }
+                
             }
 
             else
@@ -114,13 +118,32 @@ namespace Presentacion
             try
             {
 
-                Cliente cliente = LogicaClientes.Buscar(Convert.ToInt32(nuevoDocumento.Value));
-                
-                cliente.Nombre = nuevoNombre.Value;
-                cliente.Apellido = nuevoApellido.Value;
-                cliente.Telefono = nuevoTelefono.Value;
-                cliente.Direccion = nuevoDireccion.Value;
-                cliente.NroPuerta = Convert.ToInt32(nuevoPuerta.Value);
+                Cliente cliente = LogicaClientes.Buscar(Convert.ToInt32(txtBuscar.Value));
+
+
+                lbResultado.Text =Convert.ToString(cliente.Nombre);
+
+              /*  listadoClientes.Add(cliente);
+
+                GridClientes.DataSource = null;
+
+                if (listadoClientes != null)
+                {
+                    if (listadoClientes.Count > 0)
+                    {
+                        GridClientes.Visible = true;
+                        GridClientes.DataSource = listadoClientes;
+                        GridClientes.DataBind();
+                    }
+
+                }
+
+                else
+                {
+                    GridClientes.Visible = false;
+                    lbResultado.Text = "No existen clientes registrados";
+                }*/
+
             }
             catch (Exception ex)
             {

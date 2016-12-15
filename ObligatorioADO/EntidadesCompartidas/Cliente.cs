@@ -118,7 +118,7 @@ namespace EntidadesCompartidas
         // ToString()
         public override string ToString()
         {
-            return ("Cédula: " + _Cedula.ToString() + "; Nombre: " + _Nombre + "; Apellido: " + _Apellido + "; Tel: " + _Telefono+ "; Dir: " + _Direccion + "; NroPuerta: " + _NroPuerta);
+            return ("Cédula: " + _Cedula.ToString() + "; Nombre: " + _Nombre + "; Apellido: " + _Apellido + "; Tel: " + _Telefono+ "; Dir: " + _Direccion + "; NroPuerta: " + _NroPuerta.ToString());
         }
     }
 

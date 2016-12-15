@@ -19,7 +19,7 @@ namespace Persistencia
             SqlCommand comando = new SqlCommand("SP_BuscarCliente", conexion);
             comando.CommandType = CommandType.StoredProcedure;
             // parametros del sp
-            SqlParameter parametrociCli = new SqlParameter("@ciCliB", cedula);
+            SqlParameter parametrociCli = new SqlParameter("@ciCliB", cliente.Cedula);
 
 
             //agrega los parametros
@@ -28,7 +28,6 @@ namespace Persistencia
             try
             {
                 conexion.Open();
-                comando.ExecuteNonQuery();
                 SqlDataReader lector = comando.ExecuteReader();
 
                 while (lector.Read())
