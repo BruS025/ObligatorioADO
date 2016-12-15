@@ -104,12 +104,12 @@ namespace Persistencia
             comando.CommandType = CommandType.StoredProcedure;
 
 
-            SqlParameter parametroCi = new SqlParameter("@ciClieNue ", cliente.Cedula);
-            SqlParameter parametroNombre = new SqlParameter("@nomCliNue ", cliente.Nombre);
+            SqlParameter parametroCi = new SqlParameter("@ciCliNue", cliente.Cedula);
+            SqlParameter parametroNombre = new SqlParameter("@nomCliNue", cliente.Nombre);
             SqlParameter parametroApellido = new SqlParameter("@apeCliNue", cliente.Apellido);
-            SqlParameter parametroTelefono = new SqlParameter("@telCliNue ", cliente.Telefono);
-            SqlParameter parametroDireccion = new SqlParameter("@dirCliNue ", cliente.Direccion);
-            SqlParameter parametroNroPuerta = new SqlParameter("@nroPueCliNue", cliente.NroPuerta);
+            SqlParameter parametroTelefono = new SqlParameter("@telCliNue", cliente.Telefono);
+            SqlParameter parametroDireccion = new SqlParameter("@dirCliNue", cliente.Direccion);
+            SqlParameter parametroNroPuerta = new SqlParameter("@nroPueCli", cliente.NroPuerta);
 
             comando.Parameters.Add(parametroCi);
             comando.Parameters.Add(parametroNombre);

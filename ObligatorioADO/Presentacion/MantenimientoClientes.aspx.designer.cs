@@ -13,6 +13,15 @@ namespace Presentacion {
     public partial class MantenimientoClientes {
         
         /// <summary>
+        /// txtBuscar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtBuscar;
+        
+        /// <summary>
         /// btBuscar control.
         /// </summary>
         /// <remarks>
@@ -31,13 +40,22 @@ namespace Presentacion {
         protected global::System.Web.UI.WebControls.Button btnAgregar;
         
         /// <summary>
-        /// btnModificar control.
+        /// btnGuardar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnModificar;
+        protected global::System.Web.UI.WebControls.LinkButton btnGuardar;
+        
+        /// <summary>
+        /// btnGuardarCancelar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnGuardarCancelar;
         
         /// <summary>
         /// nuevoDocumento control.

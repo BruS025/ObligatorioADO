@@ -30,7 +30,7 @@
         <div class="col-md-12 col-lg-12">
             <div class="input-group col-md-6 col-lg-6">
                 <span class="input-group-addon" id="basic-addon1">Buscar cliente</span>
-                <input id="txtBuscar" type="text" class="form-control" placeholder="Ingrese caracteres de busqueda.." aria-describedby="basic-addon1"/>
+                <input id="txtBuscar" type="text" class="form-control" placeholder="Ingrese caracteres de busqueda.." aria-describedby="basic-addon1" runat="server"/>
                 <span class="input-group-btn">
                     <asp:Button ID="btBuscar" CssClass="btn btn-default" runat="server" Text="Buscar" OnClick="btnBuscar_Click" Height="34px" />
                 </span>
@@ -42,7 +42,15 @@
         <div class="col-md-1">
             <br />
             <asp:Button ID="btnAgregar" CssClass="btn btn-default" runat="server" Text="Agregar" Height="34px" OnClick="btnAgregar_Click" /> 
-            <asp:Button ID="btnModificar" CssClass="btn btn-default" runat="server" Text="Modificar" Height="34px" OnClick="btnModificar_Click" Visible ="false" />           
+                                 
+            <asp:LinkButton ID="btnGuardar" runat="server" CssClass="btn btn-default" OnClick="btnModificar_Click" Height="34px" Visible ="false" Width ="47%" Font-Size="Smaller">
+                <span aria-hidden="true" class="glyphicon glyphicon-ok"></span>
+            </asp:LinkButton>
+            
+            <asp:LinkButton ID="btnGuardarCancelar" runat="server" CssClass="btn btn-default" OnClick="btnModificarCancelar_Click" Height="34px" Visible ="false" Width="47%" Font-Size="Smaller">
+                <span aria-hidden="true" class="glyphicon glyphicon-remove"></span>
+            </asp:LinkButton>
+
         </div>
 
 	<div class="col-md-2">  
@@ -93,6 +101,8 @@
         AutoGenerateEditButton="false" 
         AllowPaging="true"       
         OnPageIndexChanging="GridClientes_PageIndexChanging"
+        OnSelectedIndexChanging="GridClientes_SelectedIndexChanging"
+        OnRowDeleting="GridClientes_RowDeleting"
           
         AutoGenerateColumns="False"
 
@@ -105,20 +115,32 @@
         Width="98%"
         ShowFooter="False"
         ShowHeaderWhenEmpty="True"
-        PageSize="10"
+        PageSize="8"
         Font-Size="Large" CaptionAlign="Top">
 
         <AlternatingRowStyle BackColor="White" />
 
           <Columns>
-              <asp:ButtonField HeaderStyle-BorderWidth="2px" ControlStyle-Font-Size="Small" ControlStyle-CssClass="btn btn-default" ButtonType="Button" HeaderText="Acciones" Text ="Editar"/>
+
+              <asp:TemplateField HeaderStyle-BorderWidth="2px" ControlStyle-Font-Size="Small" ControlStyle-CssClass="btn btn-default" HeaderText="Acciones">
+                <ItemTemplate>
+                    <asp:Button ID="btnModificar" runat="server" CommandName="select" Text="Editar" />
+                </ItemTemplate>
+              </asp:TemplateField>
+
               <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Small" DataField="Cedula" HeaderText="Cedula" SortExpression="Cedula" ReadOnly ="True" />
               <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Small" DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
               <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Small" DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
               <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Small" DataField="Telefono" HeaderText="Telefono" SortExpression="Telefono" />
               <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Small" DataField="Direccion" HeaderText="Direccion" SortExpression="Direccion" />
               <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Small" DataField="NroPuerta" HeaderText="NroPuerta" SortExpression="NroPuerta" />
-              <asp:ButtonField HeaderStyle-BorderWidth="2px" ControlStyle-Font-Size="Small" ControlStyle-CssClass="btn btn-danger" ButtonType="Button" HeaderText="Eliminar" CausesValidation="True" Text ="Eliminar"/>
+              
+              <asp:TemplateField HeaderStyle-BorderWidth="2px" ControlStyle-Font-Size="Small" ControlStyle-CssClass="btn btn-danger" HeaderText="Acciones">
+                <ItemTemplate>
+                    <asp:Button ID="btnEliminar" runat="server" CommandName="delete" Text="Eliminar" />
+                </ItemTemplate>
+              </asp:TemplateField>                           
+
           </Columns>
 
                     <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />

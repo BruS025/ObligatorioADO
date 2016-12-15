@@ -145,7 +145,7 @@ END
 GO
 
 CREATE PROCEDURE SP_ModificarCliente
-@ciCliB INT,
+@ciCliNue INT,
 @nomCliNue VARCHAR(20),
 @apeCliNue VARCHAR(20),
 @telCliNue BIGINT,
@@ -154,11 +154,6 @@ CREATE PROCEDURE SP_ModificarCliente
 
 AS
 BEGIN
-	IF EXISTS (SELECT v.ciCli FROM Ventas v WHERE v.ciCli=@ciCliB)
-		BEGIN
-			RETURN 1
-		END
-	ELSE
 		BEGIN TRANSACTION 
 		UPDATE Clientes
 		SET nomCli = @nomCliNue,
@@ -166,6 +161,7 @@ BEGIN
 			telCli = @telCliNue,
 			dirCli = @dirCliNue,
 			nroPueCli = @nroPueCli
+		WHERE Clientes.ciCli = @ciCliNue
 
 	IF @@ERROR <> 0
 		BEGIN

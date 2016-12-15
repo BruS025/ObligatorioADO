@@ -16,45 +16,16 @@ namespace Presentacion
         {
             if (!Page.IsPostBack)
             {
-
-                CargarGrilla();
-
-                /*
-                foreach (Cliente item in listadoClientes)
+                try
                 {
-                    LBMaterias.Items.Add(item.Id + " - " + item.Nombre);
+                    CargarGrilla();
                 }
 
-                // Create a new table.
-                DataTable taskTable = new DataTable("TaskList");
-
-                // Create the columns.
-                taskTable.Columns.Add("Cedula", typeof(int));
-                taskTable.Columns.Add("Nombre", typeof(string));
-                taskTable.Columns.Add("Apellido", typeof(string));
-                taskTable.Columns.Add("Telefono", typeof(int));
-                taskTable.Columns.Add("Direccion", typeof(string));
-                taskTable.Columns.Add("NroPuerta", typeof(int));
-
-                //Add data to the new table.
-                for (int i = 0; i < 20; i++)
+                catch (Exception ex)
                 {
-                    DataRow tableRow = taskTable.NewRow();
-                    tableRow["Cedula"] = i;
-                    tableRow["Nombre"] = "12345678" + i.ToString();
-                    tableRow["Apellido"] = "12345678" + i.ToString();
-                    tableRow["Telefono"] = i;
-                    tableRow["Direccion"] = "12345678" + i.ToString();
-                    tableRow["NroPuerta"] = i;
+                    lbResultado.Text = ex.Message;
+                }               
 
-                    taskTable.Rows.Add(tableRow);
-                }
-
-                //Persist the table in the Session object.
-                Session["TaskTable"] = taskTable;
-
-                //Bind data to the GridView control.
-                BindData();*/
             }
         }
 
@@ -99,16 +70,13 @@ namespace Presentacion
             }
         }
         
-
+        // Agregar nuevo cliente
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
 
             try
             {
 
-                btnAgregar.Visible = false;
-                btnModificar.Visible = true;
-       
             Cliente nuevoCliente = new Cliente();
 
             nuevoCliente.Cedula = Convert.ToInt32(nuevoDocumento.Value);
@@ -116,13 +84,14 @@ namespace Presentacion
             nuevoCliente.Apellido = nuevoApellido.Value;
             nuevoCliente.Telefono = nuevoTelefono.Value;
             nuevoCliente.Direccion = nuevoDireccion.Value;
-            nuevoCliente.NroPuerta = Convert.ToInt32(nuevoPuerta.Value);
+            nuevoCliente.NroPuerta = Convert.ToInt32(nuevoPuerta.Value);             
 
             int resultado = LogicaClientes.Agregar(nuevoCliente);
 
             if (resultado == 1)
             {
                 lbResultado.Text = "Cliente agregado..";
+                CargarGrilla();
 
             }
 
@@ -159,14 +128,12 @@ namespace Presentacion
             }
         }
 
+        // Realizamos modificaciones
         protected void btnModificar_Click(object sender, EventArgs e)
         {
-            btnAgregar.Visible = true;
-            btnModificar.Visible = false;
-
             try
             {
-               
+                       
             Cliente cliente = new Cliente();
             cliente.Cedula = Convert.ToInt32(Convert.ToInt32(nuevoDocumento.Value));
             cliente.Nombre = nuevoNombre.Value;
@@ -182,13 +149,80 @@ namespace Presentacion
             if (resultado == 1)
             {
                 lbResultado.Text = "Cliente Modificado";
-            }
+                CargarGrilla();
+
+                btnAgregar.Visible = true;
+                btnGuardar.Visible = false;
+                btnGuardarCancelar.Visible = false;
+
+                // Reseteamos campos
+                    nuevoDocumento.Disabled = false;
+                    nuevoDocumento.Value = "";
+                    nuevoNombre.Value = "";
+                    nuevoApellido.Value = "";
+                    nuevoTelefono.Value = "";
+                    nuevoDireccion.Value = "";
+                    nuevoPuerta.Value = "";
+
+                }
             else
             {
                 lbResultado.Text = "No se pudo modificar";
             }
         }
         
+            catch (Exception ex)
+            {
+                lbResultado.Text = ex.Message;
+            }
+        }
+
+        // Cargar datos a modificar
+        protected void GridClientes_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+            // Manejamos interfaz
+            btnAgregar.Visible = false;
+            btnGuardar.Visible = true;
+            btnGuardarCancelar.Visible = true;
+
+            // Cargamos datos de elemento seleccionado
+            nuevoDocumento.Disabled = true;
+            nuevoDocumento.Value = this.GridClientes.Rows[e.NewSelectedIndex].Cells[1].Text;
+            nuevoNombre.Value = this.GridClientes.Rows[e.NewSelectedIndex].Cells[2].Text;
+            nuevoApellido.Value = this.GridClientes.Rows[e.NewSelectedIndex].Cells[3].Text;
+            nuevoTelefono.Value = this.GridClientes.Rows[e.NewSelectedIndex].Cells[4].Text;
+            nuevoDireccion.Value = this.GridClientes.Rows[e.NewSelectedIndex].Cells[5].Text;
+            nuevoPuerta.Value = this.GridClientes.Rows[e.NewSelectedIndex].Cells[6].Text;
+           
+        }
+
+        protected void GridClientes_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            lbResultado.Text = "Eliminar";
+            lbResultado.Text = GridClientes.Rows[e.RowIndex].Cells[1].Text;
+
+        }
+
+        // Cancelamos modo edicion
+        protected void btnModificarCancelar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                btnAgregar.Visible = true;
+                btnGuardar.Visible = false;
+                btnGuardarCancelar.Visible = false;
+
+                // Reseteamos campos
+                nuevoDocumento.Disabled = false;
+                nuevoDocumento.Value = "";
+                nuevoNombre.Value = "";
+                nuevoApellido.Value = "";
+                nuevoTelefono.Value = "";
+                nuevoDireccion.Value = "";
+                nuevoPuerta.Value = "";
+
+            }
+
             catch (Exception ex)
             {
                 lbResultado.Text = ex.Message;
