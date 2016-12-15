@@ -15,11 +15,12 @@ namespace Persistencia
         public static Cliente Buscar(int cedula)
         {
             Cliente cliente = new Cliente();
+
             SqlConnection conexion = new SqlConnection(Conexion.CnnString);
             SqlCommand comando = new SqlCommand("SP_BuscarCliente", conexion);
             comando.CommandType = CommandType.StoredProcedure;
             // parametros del sp
-            SqlParameter parametrociCli = new SqlParameter("@ciCliB", cliente.Cedula);
+            SqlParameter parametrociCli = new SqlParameter("@ciCliB", cedula);
 
 
             //agrega los parametros

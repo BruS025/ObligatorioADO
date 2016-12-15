@@ -11,7 +11,7 @@ namespace Presentacion
 {
     public partial class MantenimientoClientes : System.Web.UI.Page
     {
-
+        // Page load
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -33,13 +33,6 @@ namespace Presentacion
         protected void btVolver_Click(object sender, EventArgs e)
         {
             Response.Redirect("Default.aspx");
-        }
-
-        // Buscar
-        protected void btBuscar_Click(object sender, EventArgs e)
-        {
-            lbResultado.Text = "Buscar";
-
         }
 
         // Index Grilla
@@ -97,7 +90,15 @@ namespace Presentacion
                 lbResultado.Text = "Cliente agregado..";
                 CargarGrilla();
 
-            }
+                // Reseteamos campos
+                nuevoDocumento.Value = "";
+                nuevoNombre.Value = "";
+                nuevoApellido.Value = "";
+                nuevoTelefono.Value = "";
+                nuevoDireccion.Value = "";
+                nuevoPuerta.Value = "";
+
+                }
 
             else
             {
@@ -110,20 +111,18 @@ namespace Presentacion
         {
                 lbResultado.Text = ex.Message;
         }
-}
+    }
 
-
+        // Buscar
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
             try
             {
+                List<Cliente> listadoClientes =  new List<Cliente>();
 
-                Cliente cliente = LogicaClientes.Buscar(Convert.ToInt32(txtBuscar.Value));
+               Cliente cliente = LogicaClientes.Buscar(Convert.ToInt32(txtBuscar.Value));
 
-
-                lbResultado.Text =Convert.ToString(cliente.Nombre);
-
-              /*  listadoClientes.Add(cliente);
+                listadoClientes.Add(cliente);
 
                 GridClientes.DataSource = null;
 
@@ -135,14 +134,13 @@ namespace Presentacion
                         GridClientes.DataSource = listadoClientes;
                         GridClientes.DataBind();
                     }
-
                 }
 
                 else
                 {
                     GridClientes.Visible = false;
                     lbResultado.Text = "No existen clientes registrados";
-                }*/
+                }
 
             }
             catch (Exception ex)
@@ -219,11 +217,35 @@ namespace Presentacion
            
         }
 
+        // Eliminar
         protected void GridClientes_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            lbResultado.Text = "Eliminar";
-            lbResultado.Text = GridClientes.Rows[e.RowIndex].Cells[1].Text;
+            try
+            {
+                lbResultado.Text = "Eliminar";
+                lbResultado.Text = GridClientes.Rows[e.RowIndex].Cells[1].Text;
 
+
+                int resultado = LogicaClientes.Eliminar(Convert.ToInt32(GridClientes.Rows[e.RowIndex].Cells[1].Text));
+
+                if (resultado == 0) // ok
+                {
+                    lbResultado.Text = "Se ha eliminado cliente";
+                    CargarGrilla();
+                }
+
+                else
+                {
+                    GridClientes.Visible = false;
+                    lbResultado.Text = "No existen clientes registrados";
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+                lbResultado.Text = ex.Message;
+            }
         }
 
         // Cancelamos modo edicion

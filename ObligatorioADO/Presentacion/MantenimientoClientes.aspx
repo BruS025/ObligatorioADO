@@ -39,7 +39,7 @@
 
         <div class="container">
 
-        <div class="col-md-1">
+        <div class="col-sm-1 col-md-1 col-lg-1">
             <br />
             <asp:Button ID="btnAgregar" CssClass="btn btn-default" runat="server" Text="Agregar" Height="34px" OnClick="btnAgregar_Click" /> 
                                  
