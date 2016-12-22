@@ -36,8 +36,8 @@ namespace EntidadesCompartidas
             get { return _Cedula; }
             set
             {
-                if ((value < 100000) || (value > 9999999))
-                    throw new Exception("ERROR: La cédula debe ser un número de 6 o 7 dígitos...");
+                if ((value < 100000) || (value > 99999999))
+                    throw new Exception("ERROR: La cédula debe ser un número de 8 dígitos...");
                 else
                     _Cedula = value;
             }

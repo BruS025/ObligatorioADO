@@ -85,7 +85,30 @@ namespace Presentacion
                     throw new Exception("ERROR: Ingrese un documento.");
                 }
 
+                if (nuevoNombre.Value == "")
+                {
+                    throw new Exception("ERROR: Ingrese un nombre.");
+                }
 
+                if (nuevoApellido.Value == "")
+                {
+                    throw new Exception("ERROR: Ingrese un apellido.");
+                }
+
+                if (nuevoTelefono.Value == "")
+                {
+                    throw new Exception("ERROR: Ingrese un telefono.");
+                }
+
+                if (nuevoDireccion.Value == "")
+                {
+                    throw new Exception("ERROR: Ingrese una direccion.");
+                }
+
+                if (nuevoPuerta.Value == "")
+                {
+                    throw new Exception("ERROR: Ingrese un numero de puerta.");
+                }
 
             Cliente nuevoCliente = new Cliente();
 
@@ -94,28 +117,22 @@ namespace Presentacion
             nuevoCliente.Apellido = nuevoApellido.Value;
             nuevoCliente.Telefono = nuevoTelefono.Value;
             nuevoCliente.Direccion = nuevoDireccion.Value;
-
-                if (nuevoPuerta.Value == "")
-                {
-                    throw new Exception("ERROR: Ingrese un numero de puerta.");
-                }
-
-                nuevoCliente.NroPuerta = Convert.ToInt32(nuevoPuerta.Value);             
+            nuevoCliente.NroPuerta = Convert.ToInt32(nuevoPuerta.Value);             
 
             int resultado = LogicaClientes.Agregar(nuevoCliente);
 
-            if (resultado == 1)
-            {
-                lbResultado.Text = "Cliente agregado..";
-                CargarGrilla();
+            if (resultado == 0)
+                {
+                    lbResultado.Text = "Cliente agregado..";
+                    CargarGrilla();
 
-                // Reseteamos campos
-                nuevoDocumento.Value = "";
-                nuevoNombre.Value = "";
-                nuevoApellido.Value = "";
-                nuevoTelefono.Value = "";
-                nuevoDireccion.Value = "";
-                nuevoPuerta.Value = "";
+                    // Reseteamos campos
+                    nuevoDocumento.Value = "";
+                    nuevoNombre.Value = "";
+                    nuevoApellido.Value = "";
+                    nuevoTelefono.Value = "";
+                    nuevoDireccion.Value = "";
+                    nuevoPuerta.Value = "";
 
                 }
 
@@ -125,15 +142,16 @@ namespace Presentacion
                 }
 
             else
-            {
-                lbResultado.Text = "No se ha agregado Cliente..";
-
-            }
+                {
+                    lbResultado.Text = "Cedula ya registrada";
+                    nuevoDocumento.Value = "";
+                }
 
             }
 
             catch (Exception ex)
         {
+                
                 lbResultado.Text = ex.Message;
         }
     }
