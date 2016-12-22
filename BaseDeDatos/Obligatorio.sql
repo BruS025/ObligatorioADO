@@ -123,7 +123,7 @@ AS
 BEGIN
 	IF EXISTS (select v.ciCli FROM Ventas v WHERE v.ciCli=@ciCliente)
 		BEGIN
-			RETURN 1
+			RETURN -1
 		END
 	ELSE
 		BEGIN TRANSACTION
@@ -133,14 +133,13 @@ BEGIN
 			IF @@ERROR <> 0
 				BEGIN
 					ROLLBACK TRANSACTION
-					RETURN @@ERROR
+					RETURN 0
 				END
 			ELSE 
 				BEGIN
 					COMMIT TRANSACTION
-					RETURN 0
+					RETURN 1
 				END
-
 END
 GO
 
@@ -552,3 +551,4 @@ insert into clientes values (8888888,'Rodrigo','Antognazza',123456789,'Casa123',
 insert into clientes values (9999999,'Rodrigo','Antognazza',123456789,'Casa123',1414);
 insert into clientes values (9999299,'Rodrigo','Antognazza',123456789,'Casa123',1414);
 
+select * from ventas;

@@ -45,6 +45,8 @@ namespace Presentacion
         // Cargar Grilla
         private void CargarGrilla()
         {
+            try { 
+
             List<Cliente> listadoClientes = LogicaClientes.Listar();
 
             GridClientes.DataSource = null;
@@ -65,6 +67,11 @@ namespace Presentacion
                 GridClientes.Visible = false;
                 lbResultado.Text = "No existen clientes registrados";
             }
+            }
+            catch (Exception )
+            {
+                lbResultado.Text = "Ha ocurrido un error";
+            }
         }
         
         // Agregar nuevo cliente
@@ -73,6 +80,12 @@ namespace Presentacion
 
             try
             {
+                if (nuevoDocumento.Value == "")
+                {
+                    throw new Exception("ERROR: Ingrese un documento.");
+                }
+
+
 
             Cliente nuevoCliente = new Cliente();
 
@@ -81,7 +94,13 @@ namespace Presentacion
             nuevoCliente.Apellido = nuevoApellido.Value;
             nuevoCliente.Telefono = nuevoTelefono.Value;
             nuevoCliente.Direccion = nuevoDireccion.Value;
-            nuevoCliente.NroPuerta = Convert.ToInt32(nuevoPuerta.Value);             
+
+                if (nuevoPuerta.Value == "")
+                {
+                    throw new Exception("ERROR: Ingrese un numero de puerta.");
+                }
+
+                nuevoCliente.NroPuerta = Convert.ToInt32(nuevoPuerta.Value);             
 
             int resultado = LogicaClientes.Agregar(nuevoCliente);
 
@@ -103,6 +122,7 @@ namespace Presentacion
             else
             {
                 lbResultado.Text = "No se ha agregado Cliente..";
+
             }
 
             }
@@ -120,7 +140,16 @@ namespace Presentacion
             {
                 List<Cliente> listadoClientes =  new List<Cliente>();
 
+                if (txtBuscar.Value != "")
+                { 
+
                Cliente cliente = LogicaClientes.Buscar(Convert.ToInt32(txtBuscar.Value));
+                
+                if (cliente.Cedula == 0)
+                    {
+                        CargarGrilla();
+                        throw new Exception("ERROR: No se encontraron coinciencias");
+                    }
 
                 listadoClientes.Add(cliente);
 
@@ -139,7 +168,12 @@ namespace Presentacion
                 else
                 {
                     GridClientes.Visible = false;
-                    lbResultado.Text = "No existen clientes registrados";
+                    lbResultado.Text = "No existen clientes registrados.";
+                }
+                }
+                else
+                {
+                    CargarGrilla();
                 }
 
             }
@@ -154,14 +188,20 @@ namespace Presentacion
         {
             try
             {
-                       
-            Cliente cliente = new Cliente();
+
+                Cliente cliente = new Cliente();
             cliente.Cedula = Convert.ToInt32(Convert.ToInt32(nuevoDocumento.Value));
             cliente.Nombre = nuevoNombre.Value;
             cliente.Apellido = nuevoApellido.Value;
             cliente.Telefono = nuevoTelefono.Value;
             cliente.Direccion = nuevoDireccion.Value;
-            cliente.NroPuerta = Convert.ToInt32(nuevoPuerta.Value);
+
+                if (nuevoPuerta.Value == "")
+                {
+                    throw new Exception("ERROR: Ingrese un numero de puerta.");
+                }
+
+                cliente.NroPuerta = Convert.ToInt32(nuevoPuerta.Value);
 
 
 
@@ -225,19 +265,25 @@ namespace Presentacion
                 lbResultado.Text = "Eliminar";
                 lbResultado.Text = GridClientes.Rows[e.RowIndex].Cells[1].Text;
 
+                int resultado = 0;
 
-                int resultado = LogicaClientes.Eliminar(Convert.ToInt32(GridClientes.Rows[e.RowIndex].Cells[1].Text));
+                resultado = LogicaClientes.Eliminar(Convert.ToInt32(GridClientes.Rows[e.RowIndex].Cells[1].Text));
 
-                if (resultado == 0) // ok
+                if (resultado == 1) // ok
                 {
-                    lbResultado.Text = "Se ha eliminado cliente";
+                    lbResultado.Text = "Se ha eliminado cliente.";
                     CargarGrilla();
+                }
+
+                else if (resultado == -1)
+                {
+                    lbResultado.Text = "No es posible eliminar un cliente con ventas asociadas.";
                 }
 
                 else
                 {
                     GridClientes.Visible = false;
-                    lbResultado.Text = "No existen clientes registrados";
+                    lbResultado.Text = "No existen clientes registrados.";
                 }
 
             }

@@ -62,7 +62,7 @@ namespace EntidadesCompartidas
             {
                 {
                     if (value.Trim().Length < 5)
-                        throw new Exception("ERROR: El nombre debe tener al menos 5 caracteres...");
+                        throw new Exception("ERROR: El apellido debe tener al menos 5 caracteres...");
                     else
                         _Apellido = value.Trim();
                 }
@@ -108,11 +108,12 @@ namespace EntidadesCompartidas
             get { return _NroPuerta; }
             set
             {
-                if ((value < 0) || (value > 9999999))
-                    throw new Exception("Error puerta");
+                if ((value < 1) || (value > 99999))
+                    throw new Exception("Error: El numero de puerta debe tener entre 1 o 5 dígitos...");
                 else
                     _NroPuerta = value;
             }
+
         }
 
         // ToString()
