@@ -119,6 +119,11 @@ namespace Presentacion
 
                 }
 
+            else if (resultado == -1)
+                {
+                    lbResultado.Text = "El documento ingresado ya se encuentra registrado.";
+                }
+
             else
             {
                 lbResultado.Text = "No se ha agregado Cliente..";

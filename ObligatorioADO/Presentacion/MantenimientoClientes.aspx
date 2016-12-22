@@ -30,7 +30,7 @@
         <div class="col-md-12 col-lg-12" id="div1">
             <div class="input-group col-md-6 col-lg-6" id="div2">
                 <span class="input-group-addon" id="basic-addon1">Buscar cliente</span>
-                <input id="txtBuscar" type="text" class="form-control" placeholder="Ingrese caracteres de busqueda.." aria-describedby="basic-addon1" runat="server"/>
+                <input id="txtBuscar" type="text" class="form-control" placeholder="Ingrese documento del cliente00000.." aria-describedby="basic-addon1" runat="server"/>
                 <span class="input-group-btn">
                     <asp:Button ID="btBuscar" CssClass="btn btn-default" runat="server" Text="Buscar" OnClick="btnBuscar_Click" Height="34px" />
                 </span>

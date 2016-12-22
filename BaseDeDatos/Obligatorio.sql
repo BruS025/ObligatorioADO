@@ -96,7 +96,7 @@ AS
 BEGIN
 	IF EXISTS (SELECT c.ciCli FROM Clientes c WHERE c.ciCli=@ciClieNue)
 		BEGIN
-			RETURN 1
+			RETURN -1
 		END
 	ELSE
 		BEGIN transaction
@@ -110,7 +110,7 @@ BEGIN
 			ELSE 
 				BEGIN
 					COMMIT TRANSACTION
-					RETURN 0
+					RETURN 1
 				END
 END
 GO
@@ -428,6 +428,17 @@ DECLARE @RETORNO INT
 EXEC @RETORNO = SP_Listar
 PRINT @retorno
 GO
+
+CREATE PROCEDURE SP_ListarCon
+AS
+BEGIN
+	SELECT * FROM Productos p JOIN Congelados c on p.codB = c.codB
+END
+
+DECLARE @RETORNO INT
+EXEC @RETORNO = SP_ListarCon
+PRINT @retorno
+
 
 CREATE PROCEDURE SP_EliminarPro
 @codB BIGINT
