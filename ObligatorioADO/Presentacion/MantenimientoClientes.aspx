@@ -27,8 +27,8 @@
 <div class="container">
     <div class="row">
 
-        <div class="col-md-12 col-lg-12">
-            <div class="input-group col-md-6 col-lg-6">
+        <div class="col-md-12 col-lg-12" id="div1">
+            <div class="input-group col-md-6 col-lg-6" id="div2">
                 <span class="input-group-addon" id="basic-addon1">Buscar cliente</span>
                 <input id="txtBuscar" type="text" class="form-control" placeholder="Ingrese caracteres de busqueda.." aria-describedby="basic-addon1" runat="server"/>
                 <span class="input-group-btn">
@@ -37,14 +37,14 @@
             </div>
         </div>
 
-        <div class="container">
+        <div class="container" id="div3">
 
-        <div class="col-sm-1 col-md-1 col-lg-1">
+        <div class="col-sm-1 col-md-1 col-lg-1" id="div4">
             <br />
             <asp:Button ID="btnAgregar" CssClass="btn btn-default" runat="server" Text="Agregar" Height="34px" OnClick="btnAgregar_Click" /> 
                                  
             <asp:LinkButton ID="btnGuardar" runat="server" CssClass="btn btn-default" OnClick="btnModificar_Click" Height="34px" Visible ="false" Width ="47%" Font-Size="Smaller">
-                <span aria-hidden="true" class="glyphicon glyphicon-ok"></span>
+                <span id="span1" aria-hidden="true" class="glyphicon glyphicon-ok"></span>
             </asp:LinkButton>
             
             <asp:LinkButton ID="btnGuardarCancelar" runat="server" CssClass="btn btn-default" OnClick="btnModificarCancelar_Click" Height="34px" Visible ="false" Width="47%" Font-Size="Smaller">
@@ -53,7 +53,7 @@
 
         </div>
 
-	<div class="col-md-2">  
+	<div class="col-md-2" id="div5">  
         <br />            
 	    <input runat="server" id="nuevoDocumento" value="" type="text" class="form-control" placeholder="CI" aria-describedby="basic-nuevoDoc" />
         </div>
@@ -159,7 +159,7 @@
 
        <div style="text-align: center" class="col-md-12">
         <br />
-        <asp:Label ID="lbResultado" runat="server" Font-Size="Small" Text="Test:Resultado"></asp:Label>
+        <asp:Label ID="lbResultado" runat="server" Font-Size="Small" Text=""></asp:Label>
         <br />
       </div>
 
@@ -175,51 +175,5 @@
 
     </div>
 </div>
-
-
-<!-- Java Script: Activar y Desactivar modal -->
-<script>
-
-    function agregarCliente() {
-        
-    }
-
-    function activateModal() {
-
-        $('#modalAgregar').modal({ backdrop: 'static', keyboard: false })
-        $("#modalAgregar").modal('show');
-        ContentPlaceHolder1_nuevoDocumento.disabled = false;
-        ContentPlaceHolder1_nuevoNombre.disabled = false;
-        ContentPlaceHolder1_nuevoApellido.disabled = false;
-        ContentPlaceHolder1_nuevoTelefono.disabled = false;
-        ContentPlaceHolder1_nuevoDireccion.disabled = false;
-        ContentPlaceHolder1_nuevoPuerta.disabled = false;
-    }
-
-    function deactivateModal() {
-
-            $("#modalAgregar").modal('show');
-            ContentPlaceHolder1_nuevoDocumento.disabled = true;
-            ContentPlaceHolder1_nuevoDocumento.value = "";
-
-            ContentPlaceHolder1_nuevoNombre.disabled = true;
-            ContentPlaceHolder1_nuevoNombre.value = "";
-
-            ContentPlaceHolder1_nuevoApellido.disabled = true;
-            ContentPlaceHolder1_nuevoApellido.value = "";
-
-            ContentPlaceHolder1_nuevoTelefono.disabled = true;
-            ContentPlaceHolder1_nuevoTelefono.value = "";
-
-            ContentPlaceHolder1_nuevoDireccion.disabled = true;
-            ContentPlaceHolder1_nuevoDireccion.value = "";
-
-            ContentPlaceHolder1_nuevoPuerta.disabled = true;
-            ContentPlaceHolder1_nuevoPuerta.value = "";
-
-    }
-
-</script>
-
 
 </asp:Content>

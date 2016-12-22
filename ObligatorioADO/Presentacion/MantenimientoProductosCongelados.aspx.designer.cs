@@ -13,6 +13,15 @@ namespace Presentacion {
     public partial class MantenimientoProductosCongelados {
         
         /// <summary>
+        /// txtBuscar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtBuscar;
+        
+        /// <summary>
         /// btBuscar control.
         /// </summary>
         /// <remarks>
@@ -29,6 +38,24 @@ namespace Presentacion {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAgregar;
+        
+        /// <summary>
+        /// btnGuardar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnGuardar;
+        
+        /// <summary>
+        /// btnGuardarCancelar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnGuardarCancelar;
         
         /// <summary>
         /// nuevoCodigo control.
@@ -49,15 +76,6 @@ namespace Presentacion {
         protected global::System.Web.UI.HtmlControls.HtmlInputText nuevoNombre;
         
         /// <summary>
-        /// nuevaFecha control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText nuevaFecha;
-        
-        /// <summary>
         /// nuevoPrecio control.
         /// </summary>
         /// <remarks>
@@ -76,13 +94,22 @@ namespace Presentacion {
         protected global::System.Web.UI.HtmlControls.HtmlInputText nuevoPeso;
         
         /// <summary>
-        /// GridClientes control.
+        /// Calendario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridClientes;
+        protected global::System.Web.UI.WebControls.Calendar Calendario;
+        
+        /// <summary>
+        /// GridProductos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridProductos;
         
         /// <summary>
         /// lbResultado control.
