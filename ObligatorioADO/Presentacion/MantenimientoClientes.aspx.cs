@@ -45,30 +45,30 @@ namespace Presentacion
         // Cargar Grilla
         private void CargarGrilla()
         {
-            try { 
-
-            List<Cliente> listadoClientes = LogicaClientes.Listar();
-
-            GridClientes.DataSource = null;
-
-            if (listadoClientes != null)
+            try
             {
-                if (listadoClientes.Count > 0 )
+
+                List<Cliente> listadoClientes = LogicaClientes.Listar();
+
+                GridClientes.DataSource = null;
+
+                if (listadoClientes != null)
                 {
-                    GridClientes.Visible = true;
-                    GridClientes.DataSource = listadoClientes;
-                    GridClientes.DataBind();
+                    if (listadoClientes.Count > 0)
+                    {
+                        GridClientes.Visible = true;
+                        GridClientes.DataSource = listadoClientes;
+                        GridClientes.DataBind();
+                    }
+                    else
+                    {
+                        GridClientes.Visible = false;
+                        lbResultado.Text = "No existen clientes registrados";
+                    }
                 }
-                
             }
 
-            else
-            {
-                GridClientes.Visible = false;
-                lbResultado.Text = "No existen clientes registrados";
-            }
-            }
-            catch (Exception )
+            catch (Exception)
             {
                 lbResultado.Text = "Ha ocurrido un error";
             }
@@ -80,12 +80,17 @@ namespace Presentacion
 
             try
             {
-                if (nuevoDocumento.Value == "")
+                if (nuevoDocumento.Value == "" || nuevoNombre.Value == "" || nuevoApellido.Value == "" || nuevoTelefono.Value == "" || nuevoDireccion.Value == "" || nuevoPuerta.Value == "")
                 {
-                    throw new Exception("ERROR: Ingrese un documento.");
+                    nuevoDocumento.Value = "";
+                    nuevoNombre.Value = "";
+                    nuevoApellido.Value = "";
+                    nuevoTelefono.Value = "";
+                    nuevoDireccion.Value = "";
+                    nuevoPuerta.Value = "";
+
+                    throw new Exception("ERROR: Todos los campos deben estar completados");
                 }
-
-
 
             Cliente nuevoCliente = new Cliente();
 
@@ -94,13 +99,7 @@ namespace Presentacion
             nuevoCliente.Apellido = nuevoApellido.Value;
             nuevoCliente.Telefono = nuevoTelefono.Value;
             nuevoCliente.Direccion = nuevoDireccion.Value;
-
-                if (nuevoPuerta.Value == "")
-                {
-                    throw new Exception("ERROR: Ingrese un numero de puerta.");
-                }
-
-                nuevoCliente.NroPuerta = Convert.ToInt32(nuevoPuerta.Value);             
+            nuevoCliente.NroPuerta = Convert.ToInt32(nuevoPuerta.Value);             
 
             int resultado = LogicaClientes.Agregar(nuevoCliente);
 
