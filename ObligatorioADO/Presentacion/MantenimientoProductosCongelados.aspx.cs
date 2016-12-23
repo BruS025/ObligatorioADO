@@ -182,31 +182,21 @@ namespace Presentacion
 
         // Realizamos modificaciones
         protected void btnModificar_Click(object sender, EventArgs e)
-        {/*
+        {
             try
             {
+                PCongelado producto = new PCongelado();
+                producto.CodigoB = Convert.ToInt32(Convert.ToInt32(nuevoCodigo.Value));
+                producto.Nombre = nuevoNombre.Value;
+                producto.FechaVto = Calendario.SelectedDate;
+                producto.Precio = Convert.ToDouble(nuevoPrecio.Value);
+                producto.Peso = Convert.ToDouble(nuevoPeso.Value);
 
-                Cliente cliente = new Cliente();
-                cliente.Cedula = Convert.ToInt32(Convert.ToInt32(nuevoCodigo.Value));
-                cliente.Nombre = nuevoNombre.Value;
-                cliente.Apellido = nuevoApellido.Value;
-                cliente.Telefono = nuevoTelefono.Value;
-                cliente.nuevoPrecio = nuevoPrecio.Value;
-
-                if (nuevoPuerta.Value == "")
-                {
-                    throw new Exception("ERROR: Ingrese un numero de puerta.");
-                }
-
-                cliente.NroPuerta = Convert.ToInt32(nuevoPuerta.Value);
-
-
-
-                int resultado = LogicaClientes.Modificar(cliente);
+                int resultado = LogicaPCongelados.Modificar(producto);
 
                 if (resultado == 1)
                 {
-                    lbResultado.Text = "Cliente Modificado";
+                    lbResultado.Text = "Producto Modificado";
                     CargarGrilla();
 
                     btnAgregar.Visible = true;
@@ -215,12 +205,11 @@ namespace Presentacion
 
                     // Reseteamos campos
                     nuevoCodigo.Disabled = false;
-                    nuevoDocumento.Value = "";
+                    nuevoCodigo.Value = "";
                     nuevoNombre.Value = "";
-                    nuevoApellido.Value = "";
-                    nuevoTelefono.Value = "";
+                    Calendario.SelectedDate = DateTime.Now;
                     nuevoPrecio.Value = "";
-                    nuevoPuerta.Value = "";
+                    nuevoPeso.Value = "";
 
                 }
                 else
@@ -232,7 +221,7 @@ namespace Presentacion
             catch (Exception ex)
             {
                 lbResultado.Text = ex.Message;
-            }*/
+            }
         }
 
         // Cargar datos a modificar
@@ -256,6 +245,7 @@ namespace Presentacion
         // Eliminar
         protected void GridProductos_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
+            // ERRORES EN SP
             try
             {
                 lbResultado.Text = "Eliminar";
@@ -292,7 +282,7 @@ namespace Presentacion
 
         // Cancelamos modo edicion
         protected void btnModificarCancelar_Click(object sender, EventArgs e)
-        {/*
+        {
             try
             {
                 btnAgregar.Visible = true;
@@ -303,17 +293,16 @@ namespace Presentacion
                 nuevoCodigo.Disabled = false;
                 nuevoCodigo.Value = "";
                 nuevoNombre.Value = "";
-                nuevoApellido.Value = "";
-                nuevoTelefono.Value = "";
+                Calendario.SelectedDate = DateTime.Now;
                 nuevoPrecio.Value = "";
-                nuevoPuerta.Value = "";
+                nuevoPeso.Value = "";
 
             }
 
             catch (Exception ex)
             {
                 lbResultado.Text = ex.Message;
-            }*/
+            }
         }
     }
 }

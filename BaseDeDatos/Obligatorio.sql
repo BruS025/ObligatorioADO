@@ -443,6 +443,7 @@ BEGIN
 				COMMIT TRANSACTION
 				RETURN 1
 			END
+
 	IF EXISTS (SELECT p.codB FROM Productos p WHERE p.codB=@codB)
 		BEGIN TRANSACTION
 			DELETE Productos
@@ -461,6 +462,13 @@ BEGIN
 			END
 END
 GO
+
+DECLARE @RETORNO INT
+EXEC @RETORNO = SP_EliminarPro 12341232
+PRINT @retorno
+;
+
+select * from Productos;
 
 
 --Ventas
