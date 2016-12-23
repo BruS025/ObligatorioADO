@@ -206,7 +206,7 @@ BEGIN
 
 IF EXISTS (SELECT codB FROM Productos WHERE codB = @cod)
 	BEGIN
-		RETURN 2
+		RETURN -1
 	END
 
 BEGIN TRANSACTION
@@ -230,7 +230,7 @@ IF @@ERROR <> 0
 ELSE
 	BEGIN
 	COMMIT TRANSACTION
-	RETURN 1
+	RETURN 2
 END
 END
 
@@ -367,7 +367,7 @@ BEGIN
 		ELSE
 			BEGIN
 				COMMIT TRANSACTION
-				RETURN 1	
+				RETURN 2	
 			END				
 END
 GO
@@ -545,3 +545,5 @@ insert into clientes values (8888888,'Rodrigo','Antognazza',123456789,'Casa123',
 insert into clientes values (9999999,'Rodrigo','Antognazza',123456789,'Casa123',1414);
 insert into clientes values (9999299,'Rodrigo','Antognazza',123456789,'Casa123',1414);
 
+
+SELECT * FROM CLIENTES;
