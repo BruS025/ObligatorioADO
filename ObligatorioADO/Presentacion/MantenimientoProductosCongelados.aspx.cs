@@ -77,7 +77,7 @@ namespace Presentacion
         // Agregar nuevo cliente
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
-            /*
+       
             try
             {
                 if (nuevoCodigo.Value == "")
@@ -87,7 +87,7 @@ namespace Presentacion
 
                 // Agregar casteo
 
-                Producto nuevoProducto = new Producto();
+                PCongelado nuevoProducto = new PCongelado();
 
                 nuevoProducto.CodigoB = Convert.ToInt32(nuevoCodigo.Value);
                 nuevoProducto.Nombre = nuevoNombre.Value;
@@ -99,13 +99,13 @@ namespace Presentacion
                 }
 
                 nuevoProducto.Precio = Convert.ToDouble(nuevoPrecio.Value);
-                nuevoProducto.Peso = nuevoPeso.Value;
+                nuevoProducto.Peso = Convert.ToDouble(nuevoPeso.Value);
 
                 int resultado = LogicaPCongelados.Agregar(nuevoProducto);
 
-                if (resultado == 1)
+                if (resultado == 2)
                 {
-                    lbResultado.Text = "Cliente agregado..";
+                    lbResultado.Text = "Producto agregado..";
                     CargarGrilla();
 
                     // Reseteamos campos
@@ -116,9 +116,14 @@ namespace Presentacion
                     nuevoPeso.Value = "";
                 }
 
+                else if (resultado == -1)
+                {
+                    lbResultado.Text = "Ya existe un producto registrado con el codigo indicado..";
+                }
+
                 else
                 {
-                    lbResultado.Text = "No se ha agregado producto...";
+                    lbResultado.Text = Convert.ToString(resultado);  //"No se ha agregado producto...";
 
                 }
 
@@ -127,7 +132,7 @@ namespace Presentacion
             catch (Exception ex)
             {
                 lbResultado.Text = ex.Message;
-            }*/
+            }
         }
 
         // Buscar
@@ -194,7 +199,7 @@ namespace Presentacion
 
                 int resultado = LogicaPCongelados.Modificar(producto);
 
-                if (resultado == 1)
+                if (resultado == 2)
                 {
                     lbResultado.Text = "Producto Modificado";
                     CargarGrilla();
@@ -214,7 +219,7 @@ namespace Presentacion
                 }
                 else
                 {
-                    lbResultado.Text = "No se pudo modificar";
+                    lbResultado.Text = Convert.ToString(resultado); //"No se pudo modificar";
                 }
             }
 
