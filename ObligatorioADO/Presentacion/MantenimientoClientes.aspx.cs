@@ -5,7 +5,8 @@ using System.Web.UI.WebControls;
 using Logica;
 using EntidadesCompartidas;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using System.Data.SqlClient; 
+
 
 namespace Presentacion
 {

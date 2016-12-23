@@ -36,8 +36,8 @@ namespace EntidadesCompartidas
             get { return _Cedula; }
             set
             {
-                if ((value < 100000) || (value > 9999999))
-                    throw new Exception("ERROR: La cédula debe ser un número de 6 o 7 dígitos...");
+                if ((value < 1000000) || (value > 99999999))
+                    throw new Exception("ERROR: La cédula debe ser un número de 8 dígitos...");
                 else
                     _Cedula = value;
             }
@@ -48,8 +48,8 @@ namespace EntidadesCompartidas
             get { return _Nombre; }
             set
             {
-                if (value.Trim().Length < 5)
-                    throw new Exception("ERROR: El nombre debe tener al menos 5 caracteres...");
+                if (value.Trim().Length < 3)
+                    throw new Exception("ERROR: El nombre debe tener al menos 3 caracteres...");
                 else
                     _Nombre = value.Trim();
             }
@@ -61,8 +61,8 @@ namespace EntidadesCompartidas
             set
             {
                 {
-                    if (value.Trim().Length < 5)
-                        throw new Exception("ERROR: El apellido debe tener al menos 5 caracteres...");
+                    if (value.Trim().Length < 3)
+                        throw new Exception("ERROR: El apellido debe tener al menos 3 caracteres...");
                     else
                         _Apellido = value.Trim();
                 }
@@ -96,8 +96,8 @@ namespace EntidadesCompartidas
             get { return _Direccion; }
             set
             {
-                if (value.Trim().Length < 5)
-                    throw new Exception("ERROR: La direccion debe tener al menos 5 caracteres...");
+                if (value.Trim().Length < 3)
+                    throw new Exception("ERROR: La direccion debe tener al menos 3 caracteres...");
                 else
                     _Direccion = value.Trim();
             }

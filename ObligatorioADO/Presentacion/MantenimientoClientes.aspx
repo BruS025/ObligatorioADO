@@ -30,7 +30,7 @@
         <div class="col-md-12 col-lg-12" id="div1">
             <div class="input-group col-md-6 col-lg-6" id="div2">
                 <span class="input-group-addon" id="basic-addon1">Buscar cliente</span>
-                <input id="txtBuscar" type="text" class="form-control" placeholder="Ingrese documento del cliente00000.." aria-describedby="basic-addon1" runat="server"/>
+                <input id="txtBuscar" type="text" class="form-control" placeholder="Ingrese documento del cliente" aria-describedby="basic-addon1" runat="server"/>
                 <span class="input-group-btn">
                     <asp:Button ID="btBuscar" CssClass="btn btn-default" runat="server" Text="Buscar" OnClick="btnBuscar_Click" Height="34px" />
                 </span>
@@ -70,12 +70,12 @@
 			
    <div class="col-md-2">
 		<br />
-		<input runat="server" id="nuevoTelefono" type="text" class="form-control" placeholder="Telefono" aria-describedby="basic-Telefono"/>
+		<input runat="server" id="nuevoTelefono" type="text" class="form-control" placeholder="Teléfono" aria-describedby="basic-Telefono"/>
 	</div>		
 
     <div class="col-md-2">
         <br />
-		<input runat="server" id="nuevoDireccion" type="text" class="form-control" placeholder="Direccion" aria-describedby="basic-Direccion"/>
+		<input runat="server" id="nuevoDireccion" type="text" class="form-control" placeholder="Dirección" aria-describedby="basic-Direccion"/>
 	</div>			
 
     <div class="col-md-1">
@@ -128,11 +128,11 @@
                 </ItemTemplate>
               </asp:TemplateField>
 
-              <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Small" DataField="Cedula" HeaderText="Cedula" SortExpression="Cedula" ReadOnly ="True" />
+              <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Small" DataField="Cedula" HeaderText="Cédula" SortExpression="Cedula" ReadOnly ="True" />
               <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Small" DataField="Nombre" HeaderText="Nombre" SortExpression="Nombre" />
               <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Small" DataField="Apellido" HeaderText="Apellido" SortExpression="Apellido" />
-              <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Small" DataField="Telefono" HeaderText="Telefono" SortExpression="Telefono" />
-              <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Small" DataField="Direccion" HeaderText="Direccion" SortExpression="Direccion" />
+              <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Small" DataField="Telefono" HeaderText="Teléfono" SortExpression="Telefono" />
+              <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Small" DataField="Direccion" HeaderText="Dirección" SortExpression="Direccion" />
               <asp:BoundField HeaderStyle-BorderWidth="2px" ItemStyle-Font-Size="Small" DataField="NroPuerta" HeaderText="NroPuerta" SortExpression="NroPuerta" />
               
               <asp:TemplateField HeaderStyle-BorderWidth="2px" ControlStyle-Font-Size="Small" ControlStyle-CssClass="btn btn-danger" HeaderText="Acciones">
