@@ -253,9 +253,6 @@ namespace Presentacion
             // ERRORES EN SP
             try
             {
-                lbResultado.Text = "Eliminar";
-                lbResultado.Text = GridProductos.Rows[e.RowIndex].Cells[1].Text;
-
                 int resultado = 0;
 
                 resultado = LogicaPCongelados.Eliminar(Convert.ToInt32(GridProductos.Rows[e.RowIndex].Cells[1].Text));
