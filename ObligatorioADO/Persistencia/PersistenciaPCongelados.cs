@@ -183,7 +183,7 @@ namespace Persistencia
                     PCong.CodigoB = Convert.ToInt32(lector["codB"].ToString());
                     PCong.Nombre = lector["nomProd"].ToString();
                     PCong.FechaVto =Convert.ToDateTime(lector["fechaVto"].ToString());
-                    PCong.Precio = Convert.ToInt32(lector["precioProd"].ToString());
+                    PCong.Precio = Convert.ToDouble(lector["precioProd"].ToString());
                     PCong.Peso = Convert.ToDouble(lector["pesoProd"].ToString());
 
                     lista.Add(((PCongelado)PCong));

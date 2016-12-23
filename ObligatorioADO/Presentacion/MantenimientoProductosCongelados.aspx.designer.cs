@@ -76,6 +76,15 @@ namespace Presentacion {
         protected global::System.Web.UI.HtmlControls.HtmlInputText nuevoNombre;
         
         /// <summary>
+        /// Calendario control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Calendar Calendario;
+        
+        /// <summary>
         /// nuevoPrecio control.
         /// </summary>
         /// <remarks>
@@ -92,15 +101,6 @@ namespace Presentacion {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText nuevoPeso;
-        
-        /// <summary>
-        /// Calendario control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar Calendario;
         
         /// <summary>
         /// GridProductos control.

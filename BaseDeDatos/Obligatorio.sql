@@ -27,15 +27,13 @@ CREATE TABLE Clientes
 )
 GO
 
-
-
 -- Creo la tabla Productos
 CREATE TABLE Productos
 (
 	codB INT NOT NULL PRIMARY KEY,
 	nomProd VARCHAR(20) NOT NULL,
 	fechaVto DATETIME NOT NULL,
-	precioProd MONEY NOT NULL,
+	precioProd MONEY NOT NULL
 )
 GO
 
@@ -55,7 +53,6 @@ CREATE TABLE Congelados
 )
 GO
 
-
 -- Creo la Tabla Ventas...
 CREATE TABLE Ventas
 (
@@ -66,7 +63,6 @@ CREATE TABLE Ventas
 	ciCli INT FOREIGN KEY REFERENCES Clientes(ciCli)
 )
 GO
-
 
 -- Creo la Tabla Lineas de las Ventas
 CREATE TABLE Linea
@@ -79,8 +75,6 @@ CREATE TABLE Linea
 GO
 
 -- Creacion de "Procedimientos almacenados"
-
-
 --Clientes
 
 CREATE PROCEDURE SP_AgregarCliente
@@ -240,12 +234,6 @@ ELSE
 END
 END
 
-
-DECLARE @RETORNO INT
-EXEC @RETORNO = SP_AgregarProdConge 123456,'prueba','2016-10-25',15,50
-PRINT @retorno
-GO
-
 CREATE PROCEDURE SP_AgregarProdEnl
 
 @cod BIGINT,
@@ -288,9 +276,6 @@ BEGIN TRANSACTION
 			END
 END
 
-DECLARE @RETORNO INT
-EXEC @RETORNO = SP_AgregarProdEnl 1234567,'prueba','2016-10-27',15,1
-PRINT @retorno
 GO
 
 CREATE PROCEDURE SP_ModificarEnla
@@ -424,21 +409,11 @@ BEGIN
 	SELECT * FROM Productos p JOIN Enlatados e ON p.codB=e.codB
 END
 
-DECLARE @RETORNO INT
-EXEC @RETORNO = SP_Listar
-PRINT @retorno
-GO
-
 CREATE PROCEDURE SP_ListarCon
 AS
 BEGIN
 	SELECT * FROM Productos p JOIN Congelados c on p.codB = c.codB
 END
-
-DECLARE @RETORNO INT
-EXEC @RETORNO = SP_ListarCon
-PRINT @retorno
-
 
 CREATE PROCEDURE SP_EliminarPro
 @codB BIGINT
@@ -562,4 +537,3 @@ insert into clientes values (8888888,'Rodrigo','Antognazza',123456789,'Casa123',
 insert into clientes values (9999999,'Rodrigo','Antognazza',123456789,'Casa123',1414);
 insert into clientes values (9999299,'Rodrigo','Antognazza',123456789,'Casa123',1414);
 
-select * from ventas;

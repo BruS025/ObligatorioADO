@@ -21,9 +21,9 @@ namespace Presentacion
                     CargarGrilla();
                 }
 
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    lbResultado.Text = ex.Message;
+                    lbResultado.Text = "Ha ocurrido un error";
                 }
 
             }
@@ -59,19 +59,18 @@ namespace Presentacion
                         GridProductos.Visible = true;
                         GridProductos.DataSource = listadoProductos;
                         GridProductos.DataBind();
+                    }            
+
+                    else
+                    {
+                        GridProductos.Visible = false;
+                        lbResultado.Text = "No existen productos registrados";
                     }
-
-                }
-
-                else
-                {
-                    GridProductos.Visible = false;
-                    lbResultado.Text = "No existen productos registrados";
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                lbResultado.Text = "Ha ocurrido un error";
+                lbResultado.Text = ex.Message; //"Ha ocurrido un error";
             }
         }
 
@@ -238,7 +237,7 @@ namespace Presentacion
 
         // Cargar datos a modificar
         protected void GridProductos_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
-        {/*
+        {
             // Manejamos interfaz
             btnAgregar.Visible = false;
             btnGuardar.Visible = true;
@@ -248,16 +247,15 @@ namespace Presentacion
             nuevoCodigo.Disabled = true;
             nuevoCodigo.Value = this.GridProductos.Rows[e.NewSelectedIndex].Cells[1].Text;
             nuevoNombre.Value = this.GridProductos.Rows[e.NewSelectedIndex].Cells[2].Text;
-            nuevoApellido.Value = this.GridProductos.Rows[e.NewSelectedIndex].Cells[3].Text;
-            nuevoTelefono.Value = this.GridProductos.Rows[e.NewSelectedIndex].Cells[4].Text;
-            nuevoPrecio.Value = this.GridProductos.Rows[e.NewSelectedIndex].Cells[5].Text;
-            nuevoPuerta.Value = this.GridProductos.Rows[e.NewSelectedIndex].Cells[6].Text;
-            */
+            Calendario.SelectedDate = Convert.ToDateTime(this.GridProductos.Rows[e.NewSelectedIndex].Cells[3].Text);
+            nuevoPrecio.Value = this.GridProductos.Rows[e.NewSelectedIndex].Cells[4].Text;
+            nuevoPeso.Value = this.GridProductos.Rows[e.NewSelectedIndex].Cells[5].Text;
+            
         }
 
         // Eliminar
         protected void GridProductos_RowDeleting(object sender, GridViewDeleteEventArgs e)
-        {/*
+        {
             try
             {
                 lbResultado.Text = "Eliminar";
@@ -265,23 +263,23 @@ namespace Presentacion
 
                 int resultado = 0;
 
-                resultado = LogicaClientes.Eliminar(Convert.ToInt32(GridProductos.Rows[e.RowIndex].Cells[1].Text));
+                resultado = LogicaPCongelados.Eliminar(Convert.ToInt32(GridProductos.Rows[e.RowIndex].Cells[1].Text));
 
                 if (resultado == 1) // ok
                 {
-                    lbResultado.Text = "Se ha eliminado cliente.";
+                    lbResultado.Text = "Se ha eliminado producto.";
                     CargarGrilla();
                 }
 
                 else if (resultado == -1)
                 {
-                    lbResultado.Text = "No es posible eliminar un cliente con ventas asociadas.";
+                    lbResultado.Text = "No es posible eliminar un producto con ventas asociadas.";
                 }
 
                 else
                 {
                     GridProductos.Visible = false;
-                    lbResultado.Text = "No existen clientes registrados.";
+                    lbResultado.Text = "No existen productos registrados.";
                 }
 
             }
@@ -289,7 +287,7 @@ namespace Presentacion
             catch (Exception ex)
             {
                 lbResultado.Text = ex.Message;
-            }*/
+            }
         }
 
         // Cancelamos modo edicion
