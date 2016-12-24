@@ -30,5 +30,10 @@ namespace Presentacion
         {
             Response.Redirect("MantenimientoProductosCongelados.aspx");
         }
+
+        protected void btVentas_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Venta.aspx");
+        }
     }
 }

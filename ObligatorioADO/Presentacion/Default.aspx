@@ -79,7 +79,7 @@
             <asp:Label ID="lbVentas" runat="server" Text="Ventas" Font-Bold="True" Font-Size="X-Large" Width="200px" BackColor="Red" ForeColor="White"></asp:Label>
             <br />
             <br />
-            <asp:Button ID="btVentas" runat="server" Text="Vender" Width="200px" BackColor="#B50000" BorderStyle="None" Font-Size="large" ForeColor="White" />
+            <asp:Button ID="btVentas" runat="server" Text="Vender" Width="200px" BackColor="#B50000" BorderStyle="None" Font-Size="large" ForeColor="White" OnClick="btVentas_Click" />
             <br />
             <br />
             <asp:Button ID="btVentasAnuales" runat="server" Text="Ventas anuales" Width="200px" BackColor="#B50000" BorderStyle="None" Font-Size="large" ForeColor="White" />

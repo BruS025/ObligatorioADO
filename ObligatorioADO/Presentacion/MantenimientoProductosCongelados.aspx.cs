@@ -250,28 +250,22 @@ namespace Presentacion
         // Eliminar
         protected void GridProductos_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            // ERRORES EN SP
             try
             {
                 int resultado = 0;
 
                 resultado = LogicaPCongelados.Eliminar(Convert.ToInt32(GridProductos.Rows[e.RowIndex].Cells[1].Text));
 
-                if (resultado == -1) // ok
+                if (resultado == -1)
                 {
                     lbResultado.Text = Convert.ToString(resultado); //"Se ha eliminado producto.";
                     CargarGrilla();
                 }
 
-                else if (resultado == 1)
-                {
-                    lbResultado.Text = Convert.ToString(resultado);// "No es posible eliminar un producto con ventas asociadas.";
-                }
-
                 else
                 {
                     GridProductos.Visible = false;
-                    lbResultado.Text = "No existen productos registrados.";
+                    lbResultado.Text = "Ha ocurrido un error..";
                 }
 
             }
