@@ -135,7 +135,7 @@ namespace Persistencia
         public static int Eliminar(int cod)
         {
             SqlConnection conexion = new SqlConnection(Conexion.CnnString);
-            SqlCommand comando = new SqlCommand("SP_EliminarPro", conexion);
+            SqlCommand comando = new SqlCommand("SP_EliminarProd", conexion);
             comando.CommandType = CommandType.StoredProcedure;
 
             SqlParameter parametroCod = new SqlParameter("@codB ", cod);

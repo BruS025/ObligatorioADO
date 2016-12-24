@@ -408,6 +408,7 @@ BEGIN
 	SELECT * FROM Productos p JOIN Congelados c ON p.codB=c.codB 
 	SELECT * FROM Productos p JOIN Enlatados e ON p.codB=e.codB
 END
+GO
 
 CREATE PROCEDURE SP_ListarCon
 AS
@@ -415,12 +416,15 @@ BEGIN
 	SELECT * FROM Productos p JOIN Congelados c on p.codB = c.codB
 END
 
-CREATE PROCEDURE SP_EliminarPro
+ALTER PROCEDURE SP_EliminarProd
 @codB BIGINT
 AS
 BEGIN
-
 	IF EXISTS (SELECT l.codB FROM Linea l WHERE l.codB=@codB)
+		BEGIN
+			RETURN -1
+		END
+	ELSE
 		BEGIN TRANSACTION
 			DELETE Linea
 			WHERE codB=@codB
@@ -443,30 +447,11 @@ BEGIN
 				COMMIT TRANSACTION
 				RETURN 1
 			END
-
-	IF EXISTS (SELECT p.codB FROM Productos p WHERE p.codB=@codB)
-		BEGIN TRANSACTION
-			DELETE Productos
-			WHERE codB=@codB
-
-			IF @@ERROR <> 0
-				BEGIN
-					ROLLBACK TRANSACTION
-					RETURN @@ERROR
-				END
-
-		ELSE
-			BEGIN
-				COMMIT TRANSACTION
-				RETURN 1
-			END
 END
 GO
-
 DECLARE @RETORNO INT
-EXEC @RETORNO = SP_EliminarPro 12341232
+EXEC @RETORNO = SP_EliminarProd 66666
 PRINT @retorno
-;
 
 select * from Productos;
 
@@ -545,5 +530,49 @@ insert into clientes values (8888888,'Rodrigo','Antognazza',123456789,'Casa123',
 insert into clientes values (9999999,'Rodrigo','Antognazza',123456789,'Casa123',1414);
 insert into clientes values (9999299,'Rodrigo','Antognazza',123456789,'Casa123',1414);
 
+--Datos de prueba Productos Congelados
 
-SELECT * FROM CLIENTES;
+insert into Productos values (11111,'prueba1','20170220',40)
+insert into Congelados values (11111,10)
+insert into Productos values (22222,'prueba2','20170220',40)
+insert into Congelados values (22222,10)
+insert into Productos values (33333,'prueba3','20170220',40)
+insert into Congelados values (33333,10)
+insert into Productos values (44444,'prueba4','20170220',40)
+insert into Congelados values (44444,10)
+insert into Productos values (55555,'prueba5','20170220',40)
+insert into Congelados values (55555,10)
+insert into Productos values (66666,'prueba6','20170220',40)
+insert into Congelados values (66666,10)
+
+insert into Ventas values ('20161223','20161230',80,1111111)
+insert into Linea (idVen,codB,cantidad) values (1,11111,5)
+
+delete Ventas
+
+/*(
+	codB INT NOT NULL PRIMARY KEY,
+	nomProd VARCHAR(20) NOT NULL,
+	fechaVto DATETIME NOT NULL,
+	precioProd MONEY NOT NULL
+
+	--
+
+	(
+	codB INT PRIMARY KEY FOREIGN KEY REFERENCES Productos(codB) ON DELETE CASCADE,
+	pesoProd INT NOT NULL,
+
+
+----
+	idVen INT NOT NULL PRIMARY KEY IDENTITY (1,1),
+	fechaVen DATETIME NOT NULL,
+	fechaPago DATETIME NOT NULL,
+	totalVen MONEY NOT NULL,
+	ciCli INT FOREIGN KEY REFERENCES Clientes(ciCli)
+----
+(
+	idVen int foreign key references Ventas(idVen) ON DELETE CASCADE,
+	codB INT FOREIGN KEY REFERENCES Productos(codB),
+	cantidad int Not Null,
+	primary key(idVen, codB)
+*/
