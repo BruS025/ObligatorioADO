@@ -12,7 +12,7 @@ namespace Persistencia
        // private static string cnnString = "Data Source=.;Initial Catalog = OBLIGATORIO; Integrated Security= true;";
 
         //Conexion B
-        private static string cnnString = "Data Source=.\\SQLEXPRESS;Initial Catalog = OBLIGATORIO; Integrated Security= true;";
+        private static string cnnString = "Data Source=.\\SQLEXPRESS;Initial Catalog = OBLIGATORIO; Integrated Security= true;Connection Timeout=3500";
 
         public static string CnnString
         {
