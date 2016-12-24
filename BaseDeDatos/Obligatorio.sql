@@ -387,20 +387,24 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE SP_BuscarCon
+ALTER PROCEDURE SP_BuscarCon
 @codBus BIGINT
 AS
 BEGIN
-	IF NOT EXISTS (SELECT p.codB FROM Productos p WHERE p.codB=@codBus)
+	IF EXISTS (SELECT p.codB FROM Productos p WHERE p.codB=@codBus)
 		BEGIN
-			RETURN 1
+			RETURN SELECT * FROM Productos p join Congelados c on p.codB=c.codB where @codBus = p.codB
 		END
 	ELSE
 		BEGIN
-			RETURN SELECT * FROM Productos p WHERE p.codB=codB UNION SELECT * FROM Congelados c WHERE c.codB=@codBus
-		end
-end
+			RETURN 1
+		END
+END
 GO
+
+DECLARE @RETORNO INT
+EXEC @RETORNO = SP_BuscarCon 33333
+PRINT @retorno
 
 CREATE PROCEDURE SP_Listar
 AS
@@ -415,6 +419,7 @@ AS
 BEGIN
 	SELECT * FROM Productos p JOIN Congelados c on p.codB = c.codB
 END
+GO
 
 ALTER PROCEDURE SP_EliminarProd
 @codB BIGINT
@@ -450,7 +455,7 @@ BEGIN
 END
 GO
 DECLARE @RETORNO INT
-EXEC @RETORNO = SP_EliminarProd 66666
+EXEC @RETORNO = SP_EliminarProd 44444
 PRINT @retorno
 
 select * from Productos;
