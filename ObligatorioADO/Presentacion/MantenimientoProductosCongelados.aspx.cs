@@ -258,10 +258,15 @@ namespace Presentacion
 
                 if (resultado == -1)
                 {
-                    lbResultado.Text = Convert.ToString(resultado); //"Se ha eliminado producto.";
+                    lbResultado.Text = Convert.ToString(resultado); //"Producto con ventas,No se puede eliminar.";
                     CargarGrilla();
                 }
 
+                if (resultado ==1)
+                {
+                    lbResultado.Text = Convert.ToString(resultado); //"Se elimino correctamente.";
+                    CargarGrilla();
+                }
                 else
                 {
                     GridProductos.Visible = false;
