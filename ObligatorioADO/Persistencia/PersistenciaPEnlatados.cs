@@ -12,7 +12,7 @@ namespace Persistencia
 {
     public class PersistenciaPEnlatados
     {
-        public static PEnlatado Buscar(long Cod)
+        public static PEnlatado Buscar(int Cod)
         {
             PEnlatado PEnlatado = new PEnlatado();
             SqlConnection conexion = new SqlConnection(Conexion.CnnString);
@@ -130,7 +130,7 @@ namespace Persistencia
             }
         }
 
-        public static int Eliminar(long cod)
+        public static int Eliminar(int cod)
         {
             SqlConnection conexion = new SqlConnection(Conexion.CnnString);
             SqlCommand comando = new SqlCommand("SP_EliminarPro", conexion);

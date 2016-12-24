@@ -13,7 +13,7 @@ namespace Persistencia
 {
     public class PersistenciaPCongelados
     {
-        public static PCongelado Buscar(long Cod)
+        public static PCongelado Buscar(int Cod)
         {
             PCongelado PCongelado = new PCongelado();
             SqlConnection conexion = new SqlConnection(Conexion.CnnString);
@@ -132,7 +132,7 @@ namespace Persistencia
             }
         }
 
-        public static int Eliminar(long cod)
+        public static int Eliminar(int cod)
         {
             SqlConnection conexion = new SqlConnection(Conexion.CnnString);
             SqlCommand comando = new SqlCommand("SP_EliminarPro", conexion);

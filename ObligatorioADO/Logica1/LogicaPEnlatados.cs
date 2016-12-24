@@ -10,7 +10,7 @@ namespace Logica
 {
     public class LogicaPEnlatados
     {
-        public static PEnlatado Buscar(long cod)
+        public static PEnlatado Buscar(int cod)
         {
             return PersistenciaPEnlatados.Buscar(cod);
         }
@@ -25,7 +25,7 @@ namespace Logica
             return PersistenciaPEnlatados.Modificar(producto);
         }
 
-        public static int Eliminar(long cod)
+        public static int Eliminar(int cod)
         {
             return PersistenciaPEnlatados.Eliminar(cod);
         }

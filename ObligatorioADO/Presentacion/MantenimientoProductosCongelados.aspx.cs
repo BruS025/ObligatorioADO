@@ -77,7 +77,7 @@ namespace Presentacion
         // Agregar nuevo cliente
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
-       
+
             try
             {
                 if (nuevoCodigo.Value == "")
@@ -103,7 +103,7 @@ namespace Presentacion
 
                 int resultado = LogicaPCongelados.Agregar(nuevoProducto);
 
-                if (resultado == 2)
+                if (resultado == 2)                   
                 {
                     lbResultado.Text = "Producto agregado..";
                     CargarGrilla();
@@ -137,23 +137,23 @@ namespace Presentacion
 
         // Buscar
         protected void btnBuscar_Click(object sender, EventArgs e)
-        {/*
+        {
             try
             {
-                List<Cliente> listadoProductos = new List<Cliente>();
+                List<PCongelado> listadoProductos = new List<PCongelado>();
 
                 if (txtBuscar.Value != "")
                 {
 
-                    Cliente cliente = LogicaClientes.Buscar(Convert.ToInt32(txtBuscar.Value));
+                    PCongelado producto = LogicaPCongelados.Buscar(Convert.ToInt32(txtBuscar.Value));
 
-                    if (cliente.Cedula == 0)
+                    if (producto.CodigoB == 0)
                     {
                         CargarGrilla();
                         throw new Exception("ERROR: No se encontraron coinciencias");
                     }
 
-                    listadoProductos.Add(cliente);
+                    listadoProductos.Add(producto);
 
                     GridProductos.DataSource = null;
 
@@ -170,7 +170,7 @@ namespace Presentacion
                     else
                     {
                         GridProductos.Visible = false;
-                        lbResultado.Text = "No existen clientes registrados.";
+                        lbResultado.Text = "No existen productos registrados.";
                     }
                 }
                 else
@@ -182,7 +182,7 @@ namespace Presentacion
             catch (Exception ex)
             {
                 lbResultado.Text = ex.Message;
-            }*/
+            }
         }
 
         // Realizamos modificaciones
@@ -257,15 +257,15 @@ namespace Presentacion
 
                 resultado = LogicaPCongelados.Eliminar(Convert.ToInt32(GridProductos.Rows[e.RowIndex].Cells[1].Text));
 
-                if (resultado == 1) // ok
+                if (resultado == -1) // ok
                 {
-                    lbResultado.Text = "Se ha eliminado producto.";
+                    lbResultado.Text = Convert.ToString(resultado); //"Se ha eliminado producto.";
                     CargarGrilla();
                 }
 
-                else if (resultado == -1)
+                else if (resultado == 1)
                 {
-                    lbResultado.Text = "No es posible eliminar un producto con ventas asociadas.";
+                    lbResultado.Text = Convert.ToString(resultado);// "No es posible eliminar un producto con ventas asociadas.";
                 }
 
                 else

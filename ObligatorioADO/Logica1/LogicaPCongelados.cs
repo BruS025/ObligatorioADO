@@ -10,7 +10,7 @@ namespace Logica
 {
     public class LogicaPCongelados
     {
-        public static PCongelado Buscar(long Cod)
+        public static PCongelado Buscar(int Cod)
         {
             return PersistenciaPCongelados.Buscar(Cod);
         }
@@ -25,7 +25,7 @@ namespace Logica
             return PersistenciaPCongelados.Modificar(producto);
         }
 
-        public static int Eliminar(long cod)
+        public static int Eliminar(int cod)
         {
             return PersistenciaPCongelados.Eliminar(cod);
         }
