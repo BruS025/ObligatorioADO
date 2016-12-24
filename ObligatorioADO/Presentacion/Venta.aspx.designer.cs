@@ -13,22 +13,31 @@ namespace Presentacion {
     public partial class Venta {
         
         /// <summary>
-        /// txtBuscar control.
+        /// VentaCliente control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtBuscar;
+        protected global::System.Web.UI.WebControls.DropDownList VentaCliente;
         
         /// <summary>
-        /// btBuscar control.
+        /// ListadoProductos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btBuscar;
+        protected global::System.Web.UI.WebControls.ListBox ListadoProductos;
+        
+        /// <summary>
+        /// btnQuitar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnQuitar;
         
         /// <summary>
         /// btnAgregar control.
@@ -40,85 +49,31 @@ namespace Presentacion {
         protected global::System.Web.UI.WebControls.Button btnAgregar;
         
         /// <summary>
-        /// btnGuardar control.
+        /// Carrito control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnGuardar;
+        protected global::System.Web.UI.WebControls.ListBox Carrito;
         
         /// <summary>
-        /// btnGuardarCancelar control.
+        /// btnLimpiar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnGuardarCancelar;
+        protected global::System.Web.UI.WebControls.Button btnLimpiar;
         
         /// <summary>
-        /// nuevoDocumento control.
+        /// btnVender control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText nuevoDocumento;
-        
-        /// <summary>
-        /// nuevoNombre control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText nuevoNombre;
-        
-        /// <summary>
-        /// nuevoApellido control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText nuevoApellido;
-        
-        /// <summary>
-        /// nuevoTelefono control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText nuevoTelefono;
-        
-        /// <summary>
-        /// nuevoDireccion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText nuevoDireccion;
-        
-        /// <summary>
-        /// nuevoPuerta control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText nuevoPuerta;
-        
-        /// <summary>
-        /// GridClientes control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridClientes;
+        protected global::System.Web.UI.WebControls.Button btnVender;
         
         /// <summary>
         /// lbResultado control.
